@@ -13,7 +13,7 @@
           class="form-control"
         />
       </div>
-      <div>
+      <div class="mb-2">
         <p>Contraseña</p>
         <input
           type="password"
@@ -25,7 +25,7 @@
       <input
         type="button"
         value="Entrar"
-        class="btn btn-success btn-block"
+        class="btn btn-rosa  btn-block"
       />
       <br />
       <input type="checkbox" /> Receurdame
@@ -45,4 +45,11 @@ export default {
 </script>
 
 <script lang="scss">
+.btn-rosa {
+  background: purple;
+  color: whitesmoke;
+  &:hover {
+    background: rgb(71, 3, 73);
+  }
+}
 </script>
