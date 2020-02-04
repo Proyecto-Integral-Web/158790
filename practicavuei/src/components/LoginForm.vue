@@ -3,13 +3,14 @@
     <header>
       <div class="logo"></div>
     </header>
-    <section>
+    <section class="col ">
       <h3>Iniciar sesion</h3>
       <div class="contenEntrada">
         <p>Nombre de usuario</p>
         <input
           type="text"
           placeholder="Olivia Johnson"
+          class="form-control"
         />
       </div>
       <div>
@@ -17,17 +18,17 @@
         <input
           type="password"
           placeholder="*******"
+          class="form-control"
         />
       </div>
-      <p>¿Contraseña olvidada? <a>Reiniciala aquí</a></p>
+      <p>¿Contraseña olvidada? <a href="#">Reiniciala aquí</a></p>
       <input
         type="button"
-        placeholder="Entrar"
+        value="Entrar"
+        class="btn btn-success btn-block"
       />
-      <input
-        type="checkbox"
-        placeholder="Recuerdame"
-      />
+      <br />
+      <input type="checkbox" /> Receurdame
       <div class="contRedesAlternativas">
         <h5>Entra con tus redes sociales</h5>
         <div class="logoRed Face"></div>
@@ -39,8 +40,8 @@
 
 <script lamg="js">
 export default {
-  name: "LoginForm"
-};
+  name: 'LoginForm'
+}
 </script>
 
 <script lang="scss">

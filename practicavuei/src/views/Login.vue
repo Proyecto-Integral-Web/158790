@@ -1,7 +1,13 @@
 <template>
   <div class="home">
-    <h1> BIENVENIDOS </h1>
-    <LoginForm></LoginForm>
+    <div class="row">
+      <div class="col col-4"></div>
+      <div class="col col-4">
+        <LoginForm></LoginForm>
+      </div>
+      <div class="col col-4"></div>
+    </div>
+
   </div>
 </template>
 
