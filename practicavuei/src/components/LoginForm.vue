@@ -8,9 +8,10 @@
       <div class="contenEntrada">
         <p>Nombre de usuario</p>
         <input
-          type="text"
-          placeholder="Olivia Johnson"
+          type="email"
+          placeholder="olivia.jhonson@oliv.co.m"
           class="form-control"
+          v-model="usuario.email"
         />
       </div>
       <div class="mb-2">
@@ -19,13 +20,20 @@
           type="password"
           placeholder="*******"
           class="form-control"
+          v-model="usuario.password"
+          @keypress.enter="login"
         />
       </div>
-      <p>¿Contraseña olvidada? <a href="#">Reiniciala aquí</a></p>
+      <p>¿Contraseña olvidada? <router-link
+          :to="{name: 'about'}"
+          :class="$route.name=='about'?'btn':''"
+        >Reiniciala aquí</router-link>
+      </p>
       <input
         type="button"
         value="Entrar"
         class="btn btn-block btn-rosa"
+        @click="login"
       />
       <br />
       <input type="checkbox" /> Receurdame
@@ -38,29 +46,44 @@
   </section>
 </template>
 
-<script lamg="js">
+<script lang="js">
 export default {
-  name: 'LoginForm'
+  name: 'LoginForm',
+  data () {
+    return {
+      usuario: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    login () {
+      setTimeout(() => {
+        this.$router.push({ name: 'about' })
+      }, 1000)
+    }
+  }
 }
 </script>
 
 <script lang="scss">
 .btn-rosa {
-  background-color: purple;
-  color: whitesmoke;
+  background-color: purple !important;
+  color: whitesmoke !important;
   &:hover {
-    background: rgb(71, 3, 73);
+    background: rgb(71, 3, 73) !important;
   }
 }
 
 .contBloque {
   border-radius: 15px;
-  background-color: #222;
-  colro: whitesmoke;
-  margin: 15px;
+  background-color: #222 !important;
+  color: whitesmoke !important;
+  margin: 5%;
 }
 
 body {
-  background-color: #090909;
+  background-color: #090909 !important;
 }
 </script>
