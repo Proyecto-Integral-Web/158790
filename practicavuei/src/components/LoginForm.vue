@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="contBloque">
     <header>
       <div class="logo"></div>
     </header>
@@ -25,7 +25,7 @@
       <input
         type="button"
         value="Entrar"
-        class="btn btn-rosa  btn-block"
+        class="btn btn-block btn-rosa"
       />
       <br />
       <input type="checkbox" /> Receurdame
@@ -46,10 +46,21 @@ export default {
 
 <script lang="scss">
 .btn-rosa {
-  background: purple;
+  background-color: purple;
   color: whitesmoke;
   &:hover {
     background: rgb(71, 3, 73);
   }
+}
+
+.contBloque {
+  border-radius: 15px;
+  background-color: #222;
+  colro: whitesmoke;
+  margin: 15px;
+}
+
+body {
+  background-color: #090909;
 }
 </script>
