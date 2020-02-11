@@ -11,7 +11,6 @@
           type="email"
           placeholder="olivia.jhonson@oliv.co.m"
           class="form-control"
-          v-model="usuario.email"
         />
       </div>
       <div class="mb-2">
@@ -20,7 +19,6 @@
           type="password"
           placeholder="*******"
           class="form-control"
-          v-model="usuario.password"
           @keypress.enter="login"
         />
       </div>
@@ -52,16 +50,21 @@ export default {
   data () {
     return {
       usuario: {
-        email: '',
-        password: ''
+        email: ' ',
+        password: ' '
       }
     }
   },
   methods: {
+    romCifrado (elemento) {
+      return elemento
+    },
+    shaCifrado (elemento) {
+      return elemento
+    },
     login () {
-      setTimeout(() => {
-        this.$router.push({ name: 'about' })
-      }, 1000)
+      usuario.password = shaCifrado(usaurio.password)
+      usuario.email = romCifrado(usaurio.email)
     }
   }
 }
