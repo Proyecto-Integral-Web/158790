@@ -1,6 +1,11 @@
 <template>
-  <section>
-    <h1>Para salir pon las manos en la cadera, un saltito a la izaqueirda pero lo que te vuelve loco es el movimeinto de las caderas</h1>
+  <section class="mb-2">
+    <input
+      type="button"
+      value="cerrar sesión"
+      @click="logOff"
+      class="btn-salir btn btn-block"
+    />
   </section>
 </template>
 
@@ -14,9 +19,20 @@ export default {
         password: ''
       }
     }
+  },
+  methods: {
+    logOff () {
+    }
   }
 }
 </script>
 
 <script lang="scss">
+.btn-salir {
+  background-color: #f00 !important;
+  color: whitesmoke !important;
+  &:hover {
+    background-color: #00f !important;
+  }
+}
 </script>

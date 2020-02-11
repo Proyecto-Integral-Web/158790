@@ -11,6 +11,7 @@
           type="email"
           placeholder="olivia.jhonson@oliv.co.m"
           class="form-control"
+          v-model="usuario.email"
         />
       </div>
       <div class="mb-2">
@@ -23,7 +24,7 @@
         />
       </div>
       <p>¿Contraseña olvidada? <router-link
-          :to="{name: 'about'}"
+          :to="{name: 'SignUp'}"
           :class="$route.name=='about'?'btn':''"
         >Reiniciala aquí</router-link>
       </p>
@@ -56,21 +57,20 @@ export default {
     }
   },
   methods: {
+    login () {
+      console.log('niciar sesion')
+    },
     romCifrado (elemento) {
       return elemento
     },
     shaCifrado (elemento) {
       return elemento
-    },
-    login () {
-      usuario.password = shaCifrado(usaurio.password)
-      usuario.email = romCifrado(usaurio.email)
     }
   }
 }
 </script>
 
-<script lang="scss">
+<style lang="scss">
 .btn-rosa {
   background-color: purple !important;
   color: whitesmoke !important;
@@ -89,4 +89,4 @@ export default {
 body {
   background-color: #090909 !important;
 }
-</script>
+</style>
