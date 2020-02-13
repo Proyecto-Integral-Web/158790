@@ -46,25 +46,24 @@
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'LoginForm',
   data () {
     return {
       usuario: {
-        email: ' ',
-        password: ' '
+        email: '',
+        password: '',
+        nombre: ''
       }
     }
+  },
+  mounted () {
+    Auth.signUp(this.usuario)
   },
   methods: {
     login () {
       console.log('niciar sesion')
-    },
-    romCifrado (elemento) {
-      return elemento
-    },
-    shaCifrado (elemento) {
-      return elemento
     }
   }
 }
