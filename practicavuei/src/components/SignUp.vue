@@ -1,5 +1,5 @@
 <template>
-<section class="contBloque">
+  <section class="contBloque">
     <header>
       <div class="logo"></div>
     </header>
@@ -15,7 +15,7 @@
         />
       </div>
       <div class="contenEntrada">
-       <p>Correo electronico</p>
+        <p>Correo electronico</p>
         <input
           type="text"
           placeholder="Nombre"
@@ -37,7 +37,7 @@
         type="button"
         value="Registrarse"
         class="btn btn-block btn-rosa"
-        @click="login"
+        @click="signUp"
       />
       <br />
       <input type="checkbox" /> Receurdame
@@ -51,6 +51,7 @@
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'SignUpForm',
   data () {
@@ -63,7 +64,13 @@ export default {
     }
   },
   methods: {
-    logOff () {
+    signUp () {
+      Auth.signUp(this.usuario)
+
+      this.$router.push({ name: 'about' })
+    },
+    login () {
+      console.log(this.usuario)
     }
   }
 }
