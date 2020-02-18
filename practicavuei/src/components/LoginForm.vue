@@ -6,7 +6,7 @@
     <section class="col ">
       <h3>Iniciar sesion</h3>
       <div class="contenEntrada">
-        <p>Nombre de usuario</p>
+        <p>Correo</p>
         <input
           type="email"
           placeholder="olivia.jhonson@oliv.co.m"
@@ -18,7 +18,7 @@
         <p>Contraseña</p>
         <input
           type="password"
-          placeholder="*******"
+          placeholder="Contraseña"
           class="form-control"
           @keypress.enter="login"
         />
@@ -53,8 +53,7 @@ export default {
     return {
       usuario: {
         email: '',
-        password: '',
-        nombre: ''
+        password: ''
       }
     }
   },
