@@ -87,5 +87,9 @@ export default {
 
 body {
   background-color: #090909 !important;
+
+  background-image: url("../assets/wall4.jpg");
+
+  background-size: 100%;
 }
 </style>

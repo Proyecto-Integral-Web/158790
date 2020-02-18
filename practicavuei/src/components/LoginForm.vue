@@ -85,6 +85,11 @@ export default {
 }
 
 body {
-  background-color: #090909 !important;
+  background-image: #090909 !important;
+
+  background-image: url("../assets/wall1.jpg") !important;
+
+  background-size: 100%;
 }
+
 </style>
