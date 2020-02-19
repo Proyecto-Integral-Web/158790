@@ -37,7 +37,10 @@
       <br />
       <input type="checkbox" /> Receurdame
       <div class="contRedesAlternativas">
-        <h5>Entra con tus redes sociales</h5>
+        <h5><router-link
+          :to="{name: 'SignUp'}"
+          :class="$route.name=='SignUp'?'btn':''"
+        >¡¡¡Registrate!!!</router-link></h5>
         <div class="logoRed Face"></div>
         <div class="logoRed Twitter"></div>
       </div>
