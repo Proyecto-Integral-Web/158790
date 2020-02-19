@@ -11,4 +11,6 @@ var firebaseConfig = {
   measurementId: 'G-HH1YRPMXVK'
 }
 
-firebase.initializeApp(firebaseConfig)
+var fireApp = firebase.initializeApp(firebaseConfig)
+
+export default fireApp

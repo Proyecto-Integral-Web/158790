@@ -11,7 +11,7 @@
           type="email"
           placeholder="Correo"
           class="form-control"
-          v-model="usuario.nombre"
+          v-model="usuario.email"
         />
       </div>
       <div class="contenEntrada">
@@ -20,7 +20,7 @@
           type="text"
           placeholder="Nombre"
           class="form-control"
-          v-model="usuario.email"
+          v-model="usuario.nombre"
         />
       </div>
       <div class="mb-2">
@@ -30,7 +30,7 @@
           placeholder="Contraseña"
           class="form-control"
           v-model="usuario.password"
-          @keypress.enter="login"
+          @keypress.enter="signUp"
         />
       </div>
       <input
