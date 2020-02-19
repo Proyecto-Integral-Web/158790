@@ -20,15 +20,3 @@ export default {
     console.log(data)
   }
 }
-
-/*
-
-    fireApp.auth().createUserWithEmailAndPassword(data.email, data.password).then((resultado) => {
-      let newUser = resultado.user.displayName = data.nombre
-      fireApp.auth().updateCurrentUser(newUser).catch(error => console.log(error))
-    }).catch(error => {
-
-    })
-
-    console.table(data)
-*/
