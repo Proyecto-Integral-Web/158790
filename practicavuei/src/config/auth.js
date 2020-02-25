@@ -16,6 +16,7 @@ export default {
 
         fireApp.auth().updateCurrentUser(newUser)
           .catch(err => console.table(err))
+        router.push('about')
       })
       .catch((err) => console.table(err))
     console.log(data)
@@ -41,8 +42,10 @@ export default {
     return null
   },
 
-  logOuth () {
+  logOut () {
     fireApp.auth().signOut()
-    router.push({ name: 'login' })
+    router.push({
+      name: 'login'
+    })
   }
 }
