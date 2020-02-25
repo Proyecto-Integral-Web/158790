@@ -41,8 +41,8 @@ export default {
 		return null
 	},
 
-	logOuth(data) {
-		fireApp.logOuth()
-		router.push({})
+	logOuth() {
+		fireApp.auth().signOut()
+		router.push({ name: 'login'})
 	}
 }
