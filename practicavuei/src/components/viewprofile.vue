@@ -62,15 +62,18 @@ export default {
       usuario: Auth.checkUser()
     }
   },
+
   mounted () {
     this.usuario = Auth.checkUser()
   },
+
   methods: {
     login () {
       Auth.login(this.usuario)
     },
+
     updateData () {
-		Auth.updateUser(this.usuario)
+      Auth.updateUser(this.usuario)
     }
   }
 }
