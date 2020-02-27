@@ -69,7 +69,7 @@ export default {
     login () {
       Auth.login(this.usuario)
         .catch(() => {
-          return alert('Usuario o contraseña erroneos')
+
         })
     }
   }

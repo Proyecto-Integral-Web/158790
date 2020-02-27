@@ -18,7 +18,9 @@ export default {
           .catch(err => console.table(err))
         router.push('about')
       })
-      .catch((err) => console.table(err))
+      .catch((err) => {
+        return Promise.reject(err)
+      })
     console.log(data)
   },
 
@@ -36,14 +38,13 @@ export default {
   },
 
   async login (data) {
-    fireApp.auth().signInWithEmailAndPassword(data.email, data.password)
+    await fireApp.auth().signInWithEmailAndPassword(data.email, data.password)
       .then((result) => {
         console.log(result)
         router.push('about')
       })
       .catch((err) => {
         console.log(err)
-        return err
       })
   },
 
