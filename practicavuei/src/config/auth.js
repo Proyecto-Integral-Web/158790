@@ -22,7 +22,20 @@ export default {
     console.log(data)
   },
 
-  login (data) {
+  updateUser (data) {
+    let newUser = {
+      displayName: data.displayName,
+      email: data.email,
+      photoURL: data.photoURL,
+      phoneNumber: data.phoneNumber
+    }
+
+    fireApp.auth().updateCurrentUser(newUser)
+      .catch((err) => console.table(err))
+    router.push('about')
+  },
+
+  async login (data) {
     fireApp.auth().signInWithEmailAndPassword(data.email, data.password)
       .then((result) => {
         console.log(result)
@@ -30,8 +43,10 @@ export default {
       })
       .catch((err) => {
         console.log(err)
+        return err
       })
   },
+
   checkUser () {
     let user = fireApp.auth().currentUser
 

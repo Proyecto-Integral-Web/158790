@@ -20,6 +20,7 @@
           type="password"
           placeholder="Contraseña"
           class="form-control"
+          v-model="usuario.password"
           @keypress.enter="login"
         />
       </div>
@@ -67,6 +68,9 @@ export default {
   methods: {
     login () {
       Auth.login(this.usuario)
+        .catch(() => {
+          return alert('Usuario o contraseña erroneos')
+        })
     }
   }
 }
