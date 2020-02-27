@@ -70,7 +70,7 @@ export default {
       Auth.login(this.usuario)
     },
     updateData () {
-
+		Auth.updateUser(this.usuario)
     }
   }
 }
