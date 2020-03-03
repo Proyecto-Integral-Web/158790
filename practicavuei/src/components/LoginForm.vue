@@ -1,5 +1,8 @@
 <template>
-  <section class="contBloque">
+  <section
+    class="contBloque"
+    :class="errorTipo"
+  >
     <header>
       <div class="logo"></div>
     </header>
@@ -48,7 +51,7 @@
         <h5>
           <router-link
             :to="{name: 'SignUp'}"
-            :class="$route.name=='SignUp'?'btn':''"
+            :class="$route.name=='SignUp'?'btn':'' "
           >¡¡¡Registrate!!!</router-link>
         </h5>
         <div class="logoRed Face"></div>
@@ -72,6 +75,7 @@ export default {
     return {
       hasErrors: false,
       errMessage: '',
+      errorTipo: '',
       usuario: {
         email: '',
         password: ''
@@ -88,6 +92,7 @@ export default {
           console.log(error.code + ':' + error.message)
           this.hasErrors = true
           this.errMessage = error.message
+          this.errorTipo = 'animated tada'
         })
     }
   }
