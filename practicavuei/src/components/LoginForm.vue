@@ -68,7 +68,8 @@ export default {
   methods: {
     login () {
       Auth.login(this.usuario)
-        .catch(() => {
+        .catch((error) => {
+          console.log(error.code + ':' + error.message)
 
         })
     }

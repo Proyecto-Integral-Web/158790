@@ -44,7 +44,7 @@ export default {
         router.push('about')
       })
       .catch((err) => {
-        console.log(err)
+        return Promise.reject(err)
       })
   },
 
