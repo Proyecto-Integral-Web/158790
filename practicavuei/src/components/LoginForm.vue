@@ -5,6 +5,12 @@
     </header>
     <section class="col ">
       <h3>Iniciar sesion</h3>
+      <AlertsComponent
+        :error="hasErrors"
+        :message="errMessage"
+      >
+
+      </AlertsComponent>
       <div class="contenEntrada">
         <p>Correo</p>
         <input
@@ -12,6 +18,7 @@
           placeholder="olivia.jhonson@oliv.co.m"
           class="form-control"
           v-model="usuario.email"
+          @keypress="hasErrors = false"
         />
       </div>
       <div class="mb-2">
@@ -53,10 +60,18 @@
 
 <script lang="js">
 import Auth from '@/config/auth.js'
+import AlertsComponent from './helpers/alerts.vue'
+
 export default {
   name: 'LoginForm',
+  components: {
+    AlertsComponent
+  },
+
   data () {
     return {
+      hasErrors: false,
+      errMessage: '',
       usuario: {
         email: '',
         password: ''
@@ -65,12 +80,14 @@ export default {
   },
   mounted () {
   },
+
   methods: {
     login () {
       Auth.login(this.usuario)
         .catch((error) => {
           console.log(error.code + ':' + error.message)
-
+          this.hasErrors = true
+          this.errMessage = error.message
         })
     }
   }
