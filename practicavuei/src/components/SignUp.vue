@@ -1,9 +1,16 @@
 <template>
-  <section class="contBloque">
+  <section
+    class="contBloque"
+    :class="hasErrors? 'animated tada': ''"
+  >
     <header>
       <div class="logo"></div>
     </header>
     <section class="col ">
+      <AlertsComponent
+        :error="hasErrors"
+        :message="errMessage"
+      ></AlertsComponent>
       <h3>Registrarse</h3>
       <div class="contenEntrada">
         <p>Nombre de usuario</p>
@@ -52,10 +59,18 @@
 
 <script lang="js">
 import Auth from '@/config/auth.js'
+import AlertsComponent from './helpers/alerts.vue'
+
 export default {
   name: 'SignUpForm',
+  components: {
+    AlertsComponent
+  },
+
   data () {
     return {
+      hasErrors: false,
+      errMessage: '',
       usuario: {
         email: '',
         password: '',
@@ -63,12 +78,14 @@ export default {
       }
     }
   },
+
   methods: {
     signUp () {
       Auth.signUp(this.usuario)
 
       this.$router.push({ name: 'about' })
     },
+
     login () {
       console.log(this.usuario)
     }
