@@ -6,6 +6,7 @@ export default {
     if (data.nombre === '' || data.email === '' || data.password === '') {
       return alert('Todos los campos son obligatorios')
     }
+
     fireApp.auth().createUserWithEmailAndPassword(data.email, data.password)
       .then((result) => {
         let newUser = {
@@ -21,6 +22,7 @@ export default {
       .catch((err) => {
         return Promise.reject(err)
       })
+
     console.log(data)
   },
 
