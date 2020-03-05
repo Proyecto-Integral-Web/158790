@@ -1,8 +1,6 @@
 <template>
   <section class="home p-5">
-    <UserArena>
-
-    </UserArena>
+    <UserArena @opcion=""></UserArena>
   </section>
 </template>
 
@@ -12,6 +10,11 @@ export default {
   name: 'sala1',
   components: {
     UserArena
+  },
+  methods: {
+    getOpction (opcion) {
+      alert(opcion)
+    }
   }
 }
 </script>

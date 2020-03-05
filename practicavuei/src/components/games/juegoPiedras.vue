@@ -5,27 +5,24 @@
         class="opcionEscogida"
         :class="usuarioActualGano? 'ganador': 'perdedor' "
       ></div>
-      <input
-        type="button"
-        value="Piedra"
-        class="button"
-      />
-      <input
-        type="button"
-        value="Papel"
-        class="button"
-      />
-      <input
-        type="button"
-        value="Tijeras"
-        class="button"
-      />
-    </div>
-    <div class="bloqueOpcion adversario">
-      <div
-        class="opcionEscogida"
-        :class="!usuarioActualGano? 'ganador': 'perdedor' "
-      ></div>
+      <div class="mostrar">
+        <input
+          type="button"
+          value="Piedra"
+          class="button"
+        />
+        <input
+          type="button"
+          value="Papel"
+          class="button"
+        />
+        <input
+          type="button"
+          value="Tijeras"
+          class="button"
+        />
+      </div>
+
     </div>
   </section>
 </template>
@@ -33,7 +30,20 @@
 <script lang="js">
 export default {
   name: 'sala1',
-  components: {}
+  data () {
+    return {
+      options: {
+        t: 'tijeras',
+        pp: 'papel',
+        p: 'piedra'
+      }
+    }
+  },
+  methods: {
+    select (key) {
+      $emit('opcion', this.key)
+    }
+  }
 }
 </script>
 
