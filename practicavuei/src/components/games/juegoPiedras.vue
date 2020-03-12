@@ -30,6 +30,7 @@
 <script lang="js">
 export default {
   name: 'sala1',
+  props: ['userOpcion'],
   data () {
     return {
       options: {
@@ -41,7 +42,7 @@ export default {
   },
   methods: {
     select (key) {
-      $emit('opcion', this.key)
+      this.$emit('opcion', this.key)
     }
   }
 }
