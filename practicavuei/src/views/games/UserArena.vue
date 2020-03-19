@@ -4,7 +4,7 @@
       value="Iniciar Partida"
       type="button"
       class="btn btn-success"
-      @click="iniciarPartida"
+      @click="crearPartida"
     />
     <!-- <UserArena @opcion=""></UserArena>-->
     <UserArena
@@ -44,14 +44,18 @@ export default {
   data () {
     return {
       partida: {},
-partidas: [],
-user: {}
+      partidas: [],
+      user: {}
     }
   },
   beforeRouteEnter (to, from, next) {
+    console.log(partida)
     next(vm => {
-		vm.user = Auth.getUser()
-      vm.obtenerPartida(to.route.params.no_partida)
+      vm.user = Auth.getUser()
+
+      vm.$bind('partida', partida.doc(to.params.no_partida))
+
+      // vm.$bind('partida', partida.doc('partida'))
     })
   },
   firestore: {
@@ -62,52 +66,60 @@ user: {}
       deep: true,
       immediate: true,
       handler (value) {
-		this.user = Auth.getUser()
+        this.user = Auth.getUser()
         this.$bind('partida', partida.doc(value.no_partida))
+        // this.$bind('partida', partida.doc('partida'))
       }
     }
   },
-  mounted() {
-this.user = Auth.getUser()
+  mounted () {
+    this.user = Auth.getUser()
   },
   methods: {
     crearPartida () {
-		this.user = Auth.getUser()
-		let uid = this.user.uid
+      this.user = Auth.getUser()
+      let uid = this.user.uid
 
-      FireApp.firestore().collection('juego1').doc('partida').set({
-       participantes: [uid],
-        'usuario_2': '',
+      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).set({
+        participantes: [uid],
         names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
- 'ganador': '',
-usuario_1: '',
-usuario_2: '',
-ganador: ''
+        usuario_1: '',
+        usuario_2: '',
+        ganador: ''
       })
     },
+    retar () {
+      this.user = Auth.getUser()
+      // eslint-disable-next-line no-unused-vars
+      let uid = this.user.uid
+      // *Escribe en la base de datos.
+      this.partida.names.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
+      this.partida.participantes.push(this.user.uid)
+      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(this.partida)
+    },
     obtenerPartida () {
-      FireApp.firestore().collection('juego1').doc(this.partida).get()
+      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).get()
         .then((result) => {
-          console.log(result.data())
+          // console.log(result.data())
         })
     },
-    getOpction (opcion) {
-let participantes = this.partida.participantes
-'usuario_1': opcion
-console.log(participantes.indexOf(this.user.uid))
-})
-let data = {}
-if (participantes.indexOf(this.user.uid) === 0) {
-data = {
-'usuario_1': opcion
-}
-} else {
- data = {
-'usuario_2': opcion
-}
-}
-fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update(data)
-}
+    getOpcion (opcion) {
+      let participantes = this.partida.participantes
+      console.log(participantes.indexOf(this.user.uid))
+
+      console.log(opcion)
+      let data = {}
+      if (participantes.indexOf(this.user.uid) === 0) {
+        data = {
+          'usuario_1': opcion
+        }
+      } else {
+        data = {
+          'usuario_2': opcion
+        }
+      }
+      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
+    }
   }
 }
 </script>

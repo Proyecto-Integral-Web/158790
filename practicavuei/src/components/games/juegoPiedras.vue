@@ -14,7 +14,7 @@
           <div class="row">
             <div
               class="col col-sm-4 opcion p-3"
-              v-for="(option,key) in options"
+              v-for="(option, key) in options"
               :key="key"
               @click="select(key)"
             >
