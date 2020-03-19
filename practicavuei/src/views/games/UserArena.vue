@@ -8,7 +8,7 @@
     />
     <!-- <UserArena @opcion=""></UserArena>-->
     <UserArena
-      @opcion="partida.participantes[0] === user.uid ? getOpcion: ''"
+      @opcion="getOpcion"
       :userOpcion="partida.usuario_1"
       :displayName="!user.displayName ? partida.names[0] !== user.displayName ? partida.names[0] : '' : user.displayName"
     ></UserArena>
@@ -20,9 +20,9 @@
       v-if="!partida.names[1]"
     >
     <UserArena
-      :displayName="!partida.names[1]?'Esperando Retador':partida.names[1]"
+      :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
       :userOpcion="partida.usuario_1 != '' ? partida.usuario_2: '' "
-      @opcion="partida.participantes[1] === user.uid ? getOpcion: '' "
+      @opcion="getOpcion"
     ></UserArena>
     {{partida}}
   </section>
@@ -105,7 +105,8 @@ export default {
     },
     getOpcion (opcion) {
       let participantes = this.partida.participantes
-      console.log(participantes.indexOf(this.user.uid))
+
+      console.log(this.partida.participantes)
 
       console.log(opcion)
       let data = {}
@@ -118,6 +119,7 @@ export default {
           'usuario_2': opcion
         }
       }
+      // console.log(data)
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
     }
   }

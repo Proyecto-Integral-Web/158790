@@ -6,7 +6,7 @@
       </div>
       <div class="row">
         <div class="col-3 mx-auto">
-          <h1>✂️</h1>
+          <h1>{{options[userOpcion]}}</h1>
         </div>
       </div>
       <div class="row">
@@ -44,21 +44,15 @@ export default {
   },
   methods: {
     select (key) {
-      this.$emit('opcion', this.key)
+      this.$emit('opcion', key)
     }
   }
 }
 </script>
 
 <style lang="scss">
-body {
-  background-image: url("../../assets/wall1.jpg") !important;
-
-  background-size: 100%;
-}
-
 .partida {
-  background-color: whitesmoke;
+  background-color: whitesmoke !important;
 }
 
 .contBloque {
