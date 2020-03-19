@@ -77,7 +77,7 @@ export default {
 
 <style lang="scss">
 body {
-  background-image: url("../assets/wall1.jpg") !important;
+  background-image: url("../../assets/wall1.jpg") !important;
 
   background-size: 100%;
 }
