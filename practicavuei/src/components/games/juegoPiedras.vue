@@ -1,28 +1,28 @@
 <template>
-  <section class="contBloque">
-    <div class="bloqueOpcion">
-      <div
-        class="opcionEscogida"
-        :class="usuarioActualGano? 'ganador': 'perdedor' "
-      ></div>
-      <div class="mostrar">
-        <input
-          type="button"
-          value="Piedra"
-          class="button"
-        />
-        <input
-          type="button"
-          value="Papel"
-          class="button"
-        />
-        <input
-          type="button"
-          value="Tijeras"
-          class="button"
-        />
+  <section>
+    <div class="container-fluid pb-5">
+      <div class="row">
+        <h3 class="mx-auto">{{displayName}}</h3>
       </div>
-
+      <div class="row">
+        <div class="col-3 mx-auto">
+          <h1>✂️</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 mx-auto opciones">
+          <div class="row">
+            <div
+              class="col col-sm-4 opcion p-3"
+              v-for="(option,key) in options"
+              :key="key"
+              @click="select(key)"
+            >
+              {{option}}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -30,13 +30,15 @@
 <script lang="js">
 export default {
   name: 'sala1',
-  props: ['userOpcion'],
+
+  props: ['userOpcion', 'displayName'],
+
   data () {
     return {
       options: {
-        t: 'tijeras',
-        pp: 'papel',
-        p: 'piedra'
+        t: '✂️',
+        pp: '🧻',
+        p: '💎'
       }
     }
   },
@@ -66,5 +68,15 @@ body {
   border-radius: 50px;
 
   background-color: gray;
+}
+
+.opciones {
+  background: grey;
+  .opcion {
+    cursor: pointer;
+    &:hover {
+      background: darkgray;
+    }
+  }
 }
 </style>

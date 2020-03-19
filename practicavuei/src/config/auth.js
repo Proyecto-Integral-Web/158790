@@ -65,5 +65,9 @@ export default {
     router.push({
       name: 'login'
     })
+  },
+
+  getUser () {
+    return fireApp.auth().currentUser
   }
 }
