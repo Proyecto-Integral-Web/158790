@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="partida">
     <div class="container-fluid pb-5">
       <div class="row">
         <h3 class="mx-auto">{{displayName}}</h3>
@@ -18,9 +18,15 @@
               :key="key"
               @click="select(key)"
             >
-              {{option}}
             </div>
           </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <input type="button" class="btn" @click="terminar" value="Terminar turno" :class="!turnoTerminado ? 'btn-success': 'btn-danger'"/>
         </div>
       </div>
     </div>
@@ -31,7 +37,7 @@
 export default {
   name: 'sala1',
 
-  props: ['userOpcion', 'displayName'],
+  props: ['userOpcion', 'displayName', 'turnoTerminado'],
 
   data () {
     return {
@@ -44,7 +50,14 @@ export default {
   },
   methods: {
     select (key) {
-      this.$emit('opcion', [key, this.displayName])
+      if (!this.turnoTerminado) {
+        this.$emit('opcion', [key, this.displayName])
+      }
+    },
+    terminar () {
+      if (this.userOpcion !== '') {
+        this.$emit('terminar', [true, this.displayName])
+      }
     }
   }
 }
@@ -52,7 +65,11 @@ export default {
 
 <style lang="scss">
 .partida {
-  background-color: whitesmoke !important;
+  border-radius: 25px;
+
+  color: #AAA;
+
+  background-color: rgba(25, 25, 25, 0.9) !important;
 }
 
 .contBloque {

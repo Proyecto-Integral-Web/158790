@@ -6,10 +6,13 @@
       class="btn btn-success"
       @click="crearPartida"
     />
-    <!-- <UserArena @opcion=""></UserArena>-->
+    <!-- <UserArena @opcion="" :userOpcion="partida.usuario_1"></UserArena>-->
     <UserArena
+      v-if="!names"
       @opcion="getOpcion"
-      :userOpcion="partida.usuario_1"
+      @terminar="finalizarTurno"
+      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (!partida.usuario_1_fin && !partida.usuario_2_fin) ? partida.usuario_1: ''"
+      :turnoTerminado="partida.usuario_1_fin"
       :displayName="!user.displayName ? partida.names[0] !== user.displayName ? partida.names[0] : '' : user.displayName"
     ></UserArena>
     <input
@@ -20,9 +23,11 @@
       v-if="!partida.names[1]"
     >
     <UserArena
+      v-if="!names"
       :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
-      :userOpcion="partida.usuario_1 != '' ? partida.usuario_2: '' "
+      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (!partida.usuario_1_fin && !partida.usuario_2_fin) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       @opcion="getOpcion"
+      @terminar="finalizarTurno"
     ></UserArena>
     {{partida}}
   </section>
@@ -49,9 +54,11 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    console.log(partida)
+    // console.log(partida)
     next(vm => {
       vm.user = Auth.getUser()
+
+      // vm.crearPartida()
 
       vm.$bind('partida', partida.doc(to.params.no_partida))
 
@@ -85,6 +92,8 @@ export default {
         names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
         usuario_1: '',
         usuario_2: '',
+        usuario_1_fin: false,
+        usuario_2_fin: false,
         ganador: ''
       })
     },
@@ -97,12 +106,14 @@ export default {
       this.partida.participantes.push(this.user.uid)
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(this.partida)
     },
+
     obtenerPartida () {
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).get()
         .then((result) => {
           // console.log(result.data())
         })
     },
+
     getOpcion (opcion) {
       let participantes = this.partida.participantes
 
@@ -119,6 +130,27 @@ export default {
       } else {
         data = {
           'usuario_2': opcion[0]
+        }
+      }
+      // console.log(data)
+      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
+    },
+
+    finalizarTurno (quien) {
+      let participantes = this.partida.participantes
+
+      if (this.partida.names[participantes.indexOf(this.user.uid)] !== quien[1]) {
+        return 0
+      }
+
+      let data = {}
+      if (participantes.indexOf(this.user.uid) === 0) {
+        data = {
+          'usuario_1_fin': quien[0]
+        }
+      } else {
+        data = {
+          'usuario_2_fin': quien[0]
         }
       }
       // console.log(data)
