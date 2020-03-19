@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     select (key) {
-      this.$emit('opcion', key)
+      this.$emit('opcion', [key, this.displayName])
     }
   }
 }

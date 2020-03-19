@@ -106,17 +106,19 @@ export default {
     getOpcion (opcion) {
       let participantes = this.partida.participantes
 
-      console.log(this.partida.participantes)
+      if (this.partida.names[participantes.indexOf(this.user.uid)] !== opcion[1]) {
+        return 0
+      }
 
       console.log(opcion)
       let data = {}
       if (participantes.indexOf(this.user.uid) === 0) {
         data = {
-          'usuario_1': opcion
+          'usuario_1': opcion[0]
         }
       } else {
         data = {
-          'usuario_2': opcion
+          'usuario_2': opcion[0]
         }
       }
       // console.log(data)
