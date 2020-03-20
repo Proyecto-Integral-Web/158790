@@ -30,7 +30,7 @@
       @opcion="getOpcion"
       @terminar="finalizarTurno"
     ></UserArena>
-    {{partida}}
+    <!--{{partida}}-->
   </section>
 </template>
 
