@@ -18,6 +18,7 @@
               :key="key"
               @click="select(key)"
             >
+            {{option}}
             </div>
           </div>
         </div>
