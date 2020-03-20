@@ -11,7 +11,7 @@
       v-if="!names"
       @opcion="getOpcion"
       @terminar="finalizarTurno"
-      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (!partida.usuario_1_fin && !partida.usuario_2_fin) ? partida.usuario_1: ''"
+      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (partida.usuario_1_fin && partida.usuario_2_fin) ? partida.usuario_1: ''"
       :turnoTerminado="partida.usuario_1_fin"
       :displayName="!user.displayName ? partida.names[0] !== user.displayName ? partida.names[0] : '' : user.displayName"
     ></UserArena>
@@ -24,8 +24,9 @@
     >
     <UserArena
       v-if="!names"
+      :turnoTerminado="partida.usuario_2_fin"
       :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
-      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (!partida.usuario_1_fin && !partida.usuario_2_fin) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
+      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (partida.usuario_1_fin && partida.usuario_2_fin) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       @opcion="getOpcion"
       @terminar="finalizarTurno"
     ></UserArena>
@@ -132,7 +133,7 @@ export default {
           'usuario_2': opcion[0]
         }
       }
-      // console.log(data)
+
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
     },
 
@@ -153,7 +154,7 @@ export default {
           'usuario_2_fin': quien[0]
         }
       }
-      // console.log(data)
+
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
     }
   }
