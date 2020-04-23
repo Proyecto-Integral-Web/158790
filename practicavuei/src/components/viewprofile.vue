@@ -5,12 +5,13 @@
     </header>
     <section class="col ">
       <div class="fotoPerfil"><img
-          src="usuario.photoURL"
+          :src="usuario.photoURL"
+          :srcset="usuario.photoURL"
           class="fotoPerfil"
         /></div>
       <input
         type="url"
-        placeholder="gravatar.com/userId"
+        :placeholder="usuario.photoURL || 'gravatar.com/user'"
         class="form-control"
         v-model="usuario.photoURL"
       />
@@ -22,6 +23,15 @@
           placeholder="olivia.jhonson@oliv.co.m"
           class="form-control"
           v-model="usuario.email"
+        />
+      </div>
+      <div class="contenEntrada">
+        <p>Nombre de usuario</p>
+        <input
+          type="text"
+          placeholder="nombre mostrado"
+          class="form-control"
+          v-model="usuario.displayName"
         />
       </div>
       <div class="mb-2">
@@ -36,7 +46,7 @@
       <div class="contenEntrada">
         <p>Numero telefonico</p>
         <input
-          type="number"
+          type="cellpbhone"
           placeholder="(656) 123 4567"
           class="form-control"
           v-model="usuario.phoneNumber"
@@ -73,7 +83,15 @@ export default {
     },
 
     updateData () {
-      Auth.updateUser(this.usuario)
+      this.usuario.updateProfile({
+        displayName: this.usuario.displayName,
+        photoURL: this.usuario.photoURL,
+        phoneNumber: this.usuario.phoneNumber
+      }).then(() => {
+        console.log('Logrado')
+      }).catch(() => {
+        console.log('Un error inesperado... o mo tanto')
+      })
     }
   }
 }
