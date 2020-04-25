@@ -27,7 +27,7 @@
       <br />
       <div class="row">
         <div class="col-6 mx-auto">
-          <input type="button" class="btn" @click="terminar" value="Terminar turno" :class="!turnoTerminado ? 'btn-success': 'btn-danger'"/>
+          <input type="button" class="btn" @click="terminar" value="Terminar turno" :class="turnoTerminado ? 'btn-danger': 'btn-success'"/>
         </div>
       </div>
     </div>
@@ -52,12 +52,13 @@ export default {
   methods: {
     select (key) {
       if (!this.turnoTerminado) {
-        this.$emit('opcion', [key, this.displayName])
+        this.userOpcion = key
       }
     },
     terminar () {
       if (this.userOpcion !== '') {
-        this.$emit('terminar', [true, this.displayName])
+        this.$emit('terminar', [this.userOpcion, this.displayName])
+        this.turnoTerminado = true
       }
     }
   }

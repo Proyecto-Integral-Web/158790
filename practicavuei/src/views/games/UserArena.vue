@@ -9,9 +9,8 @@
     <!-- <UserArena @opcion="" :userOpcion="partida.usuario_1"></UserArena>-->
     <UserArena
       v-if="!names"
-      @opcion="getOpcion"
       @terminar="finalizarTurno"
-      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (partida.usuario_1_fin && partida.usuario_2_fin) ? partida.usuario_1: ''"
+      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
       :turnoTerminado="partida.usuario_1_fin"
       :displayName="!user.displayName ? partida.names[0] !== user.displayName ? partida.names[0] : '' : user.displayName"
     ></UserArena>
@@ -26,8 +25,7 @@
       v-if="!names"
       :turnoTerminado="partida.usuario_2_fin"
       :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
-      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (partida.usuario_1_fin && partida.usuario_2_fin) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
-      @opcion="getOpcion"
+      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       @terminar="finalizarTurno"
     ></UserArena>
     <!--{{partida}}-->
@@ -92,10 +90,7 @@ export default {
         participantes: [uid],
         names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
         usuario_1: '',
-        usuario_2: '',
-        usuario_1_fin: false,
-        usuario_2_fin: false,
-        ganador: ''
+        usuario_2: ''
       })
     },
     retar () {
@@ -147,11 +142,11 @@ export default {
       let data = {}
       if (participantes.indexOf(this.user.uid) === 0) {
         data = {
-          'usuario_1_fin': quien[0]
+          'usuario_1': quien[0]
         }
       } else {
         data = {
-          'usuario_2_fin': quien[0]
+          'usuario_2': quien[0]
         }
       }
 
