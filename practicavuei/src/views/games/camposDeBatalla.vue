@@ -1,36 +1,6 @@
 <template>
   <section class="home p-5">
-    <input
-      value="Iniciar Partida"
-      type="button"
-      class="btn btn-success"
-      @click="crearPartida"
-    />
-    <!-- <UserArena @opcion="" :userOpcion="partida.usuario_1"></UserArena>-->
-    <UserArena
-      v-if="!names"
-      @opcion="getOpcion"
-      @terminar="finalizarTurno"
-      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (partida.usuario_1_fin && partida.usuario_2_fin) ? partida.usuario_1: ''"
-      :turnoTerminado="partida.usuario_1_fin"
-      :displayName="!user.displayName ? partida.names[0] !== user.displayName ? partida.names[0] : '' : user.displayName"
-    ></UserArena>
-    <input
-      type="button"
-      class="btn btn-outline-primary"
-      text="👾"
-      @click="retar"
-      v-if="!partida.names[1]"
-    >
-    <UserArena
-      v-if="!names"
-      :turnoTerminado="partida.usuario_2_fin"
-      :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
-      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (partida.usuario_1_fin && partida.usuario_2_fin) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
-      @opcion="getOpcion"
-      @terminar="finalizarTurno"
-    ></UserArena>
-    <!--{{partida}}-->
+
   </section>
 </template>
 
@@ -39,7 +9,7 @@ import UserArena from '@/components/games/juegoPiedras'
 import FireApp from '@/config/_firebase.js'
 import Auth from '@/config/auth'
 
-const partida = FireApp.firestore().collection('juego1')
+const partidas = FireApp.firestore().collection('juego1')
 
 export default {
   name: 'sala1',
@@ -61,11 +31,7 @@ export default {
     next(vm => {
       vm.user = Auth.getUser()
 
-      // vm.crearPartida()
-
       vm.$bind('partida', partida.doc(to.params.no_partida))
-
-      // vm.$bind('partida', partida.doc('partida'))
     })
   },
 
@@ -80,7 +46,6 @@ export default {
       handler (value) {
         this.user = Auth.getUser()
         this.$bind('partida', partida.doc(value.no_partida))
-        // this.$bind('partida', partida.doc('partida'))
       }
     }
   },
