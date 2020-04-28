@@ -38,25 +38,6 @@ export default {
 </script>
 
 <style lang="scss">
-.btn-rosa {
-  background-color: purple !important;
-  color: whitesmoke !important;
-  &:hover {
-    background: rgb(71, 3, 73) !important;
-  }
-}
-
-.contBloque {
-  border-radius: 15px;
-  background-color: #222 !important;
-  color: whitesmoke !important;
-  margin: 5%;
-}
-
-.contenEntrada {
-  margin-bottom: 15px;
-}
-
 .fotoPerfil {
   width: 90%;
   border-radius: 100%;
@@ -64,11 +45,6 @@ export default {
   margin-bottom: 30px;
   margin-top: 10px;
 }
-body {
-  background-image: #090909 !important;
 
-  background-image: url("../assets/wall1.jpg") !important;
-
-  background-size: 100%;
-}
+@import "./recursos/css/master.css"
 </style>
