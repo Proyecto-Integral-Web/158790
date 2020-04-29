@@ -7,7 +7,7 @@
       <h3>Nombre: {{usuario.displayName}}</h3>
 
       <div class="fotoPerfil"><img
-          src="../assets/logo.png"
+          :src="usuario.photoURL ||'../assets/logo.png'"
           class="fotoPerfil"
         /></div>
     </section>

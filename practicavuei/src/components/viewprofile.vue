@@ -7,12 +7,19 @@ export default {
   name: 'LoginForm',
   data () {
     return {
-      usuario: Auth.checkUser()
+      usuario: Auth.checkUser(),
+      displayName: '',
+      photoURL: '',
+      phoneNumber: ''
     }
   },
 
   mounted () {
     this.usuario = Auth.checkUser()
+
+    this.displayName = this.usuario.displayName
+    this.photoURL = this.usuario.photoURL
+    this.phoneNumber = this.usuario.phoneNumber
   },
 
   methods: {
@@ -22,9 +29,9 @@ export default {
 
     updateData () {
       this.usuario.updateProfile({
-        displayName: this.usuario.displayName,
-        photoURL: this.usuario.photoURL,
-        phoneNumber: this.usuario.phoneNumber
+        displayName: this.displayName,
+        photoURL: this.photoURL,
+        phoneNumber: this.phoneNumber
       }).then(() => {
         console.log('Logrado')
       }).catch(() => {
