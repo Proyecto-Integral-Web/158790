@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss">
- @import "../recursos/css/juegos/opciones.css"
+ @import "../recursos/css/juegos/opciones.scss"
 </style>

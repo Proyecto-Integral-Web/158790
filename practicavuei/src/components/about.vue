@@ -46,5 +46,5 @@ export default {
   margin-top: 10px;
 }
 
-@import "./recursos/css/master.css"
+@import "./recursos/css/master.scss"
 </style>

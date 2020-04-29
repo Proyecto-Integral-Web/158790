@@ -38,5 +38,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./recursos/css/master.css"
+@import "./recursos/css/master.scss"
 </style>
