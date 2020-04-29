@@ -21,13 +21,9 @@ Vue.use(firestorePlugin)
 
 router.beforeEach((to, from, next) => {
   if (to.meta.auth) {
-    console.log('Necesita permisos para entrar')
     let user = Auth.checkUser()
 
-    console.log(user)
-
     if (user == null) {
-      console.log('Angry Session')
       next({
         name: 'Login'
       })

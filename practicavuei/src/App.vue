@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{name: 'about'}"> About</router-link> |
-      <router-link :to="{name: 'profile'}"> Perfil</router-link> |
-      <router-link to="/sala/partida2"> Juego</router-link>
+      <router-link v-if="usuario == null" to="/" @click="update">Home</router-link> |
+      <router-link :to="{name: 'about'}" @click="update"> About</router-link> |
+      <router-link :to="{name: 'profile'}" @click="update"> Perfil</router-link> |
+      <router-link to="/sala/partida2" @click="update"> Juego</router-link>
     </div>
     <div class="container-fluid">
       <router-view />
