@@ -12,7 +12,7 @@
       @terminar="finalizarTurno"
       :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
       :turnoTerminado="partida.usuario_1_fin"
-      :displayName="!user.displayName ? partida.names[0] !== user.displayName ? partida.names[0] : '' : user.displayName"
+      :displayName="!user.displayName ? (partida.names[0] !== user.displayName ? partida.names[0] : '' ): partida.participantes[0] == this.user.uid ? user.displayName : partida.names[0]"
     ></UserArena>
     <input
       type="button"
@@ -55,15 +55,10 @@ export default {
   },
 
   beforeRouteEnter (to, from, next) {
-    // console.log(partida)
     next(vm => {
       vm.user = Auth.getUser()
 
-      // vm.crearPartida()
-
       vm.$bind('partida', partida.doc(to.params.no_partida))
-
-      // vm.$bind('partida', partida.doc('partida'))
     })
   },
 
@@ -78,7 +73,6 @@ export default {
       handler (value) {
         this.user = Auth.getUser()
         this.$bind('partida', partida.doc(value.no_partida))
-        // this.$bind('partida', partida.doc('partida'))
       }
     }
   },
@@ -107,6 +101,7 @@ export default {
       // *Escribe en la base de datos.
       this.partida.names.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
       this.partida.participantes.push(this.user.uid)
+
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(this.partida)
     },
 
