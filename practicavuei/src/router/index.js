@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import salaJuegos from '../views/games/UserArena'
+import salaPartidas from '../views/games/camposDeBatalla'
 
 // import SignUp from '../views/SignUp.vue'
 
@@ -59,6 +60,15 @@ const routes = [{
   // this generates a separate chunk (about.[hash].js) for this route
   // which is lazy-loaded when the route is visited.
   component: salaJuegos,
+  meta: {
+    auth: true
+  }
+},
+{
+  path: '/partidas',
+  name: 'GameArena',
+  // route level code-splitting
+  component: salaPartidas,
   meta: {
     auth: true
   }
