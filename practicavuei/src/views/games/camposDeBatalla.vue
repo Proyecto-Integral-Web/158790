@@ -6,7 +6,11 @@
          <Arena
             :partida="partida"
             ></Arena>
-        ==========
+     </div>
+     <div v-for="partida in coleccionDePartidasSecundaria" :key="partida.id">
+         <Arena
+            :partida="partida"
+            ></Arena>
      </div>
 </div>
 </template>
@@ -76,7 +80,6 @@ export default {
           this.$bind('coleccionDePartidas', partidas.where('retador', '==', this.user.uid))
           this.$bind('coleccionDePartidasSecundaria', partidas.where('contricante', '==', this.user.uid))
         }
-        // this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
       }
     }
   },
