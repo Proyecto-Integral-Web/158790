@@ -21,7 +21,6 @@
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       @terminar="finalizarTurno"
     ></UserArena>
-    <!--{{partida}}-->
   </section>
 </template>
 
@@ -52,9 +51,7 @@ export default {
       vm.user = Auth.getUser()
 
       if (to.params.no_partida === 'CrearPartida') {
-        // vm.$bind('partida', partida.add(vm.crearPartida()))
         vm.crearPartida()
-        console.log('<<<<<<<<<<>>>>>>>>>>')
       } else {
         vm.$bind('partida', partida.doc(to.params.no_partida))
       }
@@ -118,9 +115,7 @@ export default {
 
     obtenerPartida () {
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).get()
-        .then((result) => {
-          // console.log(result.data())
-        })
+        .then((result) => {})
     },
 
     finalizarTurno (quien) {
