@@ -5,19 +5,19 @@
       @terminar="finalizarTurno"
       :userOpcion="(partida.retador === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
       :turnoTerminado="partida.usuario_1_fin"
-      :displayName="!user.displayName ? (partida.names[0] !== user.displayName ? partida.names[0] : '' ): partida.retador == this.user.uid ? user.displayName : partida.names[0]"
+      :displayName="(partida.retador === this.user.uid) ? 'Escoge sabiamente': partida.names[0]"
     ></UserArena>
     <input
       type="button"
       class="btn btn-outline-primary"
-      text="👾"
+      value="👾"
       @click="retar"
       v-if="!partida.names[1]"
     >
     <UserArena
-      v-if="!names"
+      v-if="!partidas.contricante"
       :turnoTerminado="partida.usuario_2_fin"
-      :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
+      :displayName="(partida.contricante === this.user.uid) ? 'Elige tu opcion': 'partida.names[1]'"
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       @terminar="finalizarTurno"
     ></UserArena>
