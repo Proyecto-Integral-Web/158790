@@ -5,12 +5,12 @@
       </div>
       <div class="col">
         <div class="col-3 mx-auto">
-          <h1>{{options[partida.jugador_1]}}</h1>
+          <h1>{{((partida.jugador_1 != '') && (partida.jugador_2 != '')) ? 'options[partida.jugador_1]': ''}}</h1>
         </div>
       </div>
       <div class="col">
         <div class="col-3 mx-auto">
-          <h1>{{options[partida.jugador2]}}</h1>
+          <h1>{{((partida.jugador_1 != '') && (partida.jugador_2 != '')) ? options[partida.jugador2]: ''}}</h1>
         </div>
       </div>
     </div>
