@@ -3,9 +3,9 @@
     <UserArena
       v-if="!names"
       @terminar="finalizarTurno"
-      :userOpcion="(partida.participantes[0] === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
+      :userOpcion="(partida.retador === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
       :turnoTerminado="partida.usuario_1_fin"
-      :displayName="!user.displayName ? (partida.names[0] !== user.displayName ? partida.names[0] : '' ): partida.participantes[0] == this.user.uid ? user.displayName : partida.names[0]"
+      :displayName="!user.displayName ? (partida.names[0] !== user.displayName ? partida.names[0] : '' ): partida.retador == this.user.uid ? user.displayName : partida.names[0]"
     ></UserArena>
     <input
       type="button"
@@ -18,7 +18,7 @@
       v-if="!names"
       :turnoTerminado="partida.usuario_2_fin"
       :displayName="!partida.names[1] ? 'Esperando Retador': partida.names[1]"
-      :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
+      :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       @terminar="finalizarTurno"
     ></UserArena>
     <!--{{partida}}-->
@@ -87,8 +87,9 @@ export default {
 
       var partida = {
         abierta: true,
-        participantes: [uid],
         names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
+        retador: uid,
+        contricante: '',
         usuario_1: '',
         usuario_2: ''
       }
@@ -109,7 +110,7 @@ export default {
       let uid = this.user.uid
       // *Escribe en la base de datos.
       this.partida.names.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
-      this.partida.participantes.push(this.user.uid)
+      this.partida.retador = this.user.uid
       this.partida.abierta = false
 
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(this.partida)
@@ -123,7 +124,7 @@ export default {
     },
 
     finalizarTurno (quien) {
-      let participantes = this.partida.participantes
+      let participantes = [this.partida.retador, this.partida.contricante]
 
       if (this.partida.names[participantes.indexOf(this.user.uid)] !== quien[1]) {
         return 0
