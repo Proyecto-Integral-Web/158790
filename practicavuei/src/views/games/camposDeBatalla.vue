@@ -42,11 +42,14 @@ export default {
       vm.user = Auth.getUser()
 
       if (to.params.vista === 'abiertas') {
+        vm.coleccionDePartidas = []
         vm.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
       }
       if (to.params.vista === 'misSalas') {
-        vm.$bind('coleccionDePartidas', partidas.where('participantes.0', '==', vm.user.uid))
-        vm.$bind('coleccionDePartidasSecundaria', partidas.where('participantes.1', '==', vm.user.uid))
+        vm.coleccionDePartidas = []
+        vm.coleccionDePartidasSecundaria = []
+        vm.$bind('coleccionDePartidas', partidas.where('retador', '==', vm.user.uid))
+        vm.$bind('coleccionDePartidasSecundaria', partidas.where('contricante', '==', vm.user.uid))
       }
 
       // vm.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
@@ -63,14 +66,24 @@ export default {
       immediate: true,
       handler (value) {
         this.user = Auth.getUser()
-        this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
+        if (value.vista === 'abiertas') {
+          this.coleccionDePartidas = []
+          this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
+        }
+        if (value.vista === 'misSalas') {
+          this.coleccionDePartidas = []
+          this.coleccionDePartidasSecundaria = []
+          this.$bind('coleccionDePartidas', partidas.where('retador', '==', this.user.uid))
+          this.$bind('coleccionDePartidasSecundaria', partidas.where('contricante', '==', this.user.uid))
+        }
+        // this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
       }
     }
   },
 
   mounted () {
     this.user = Auth.getUser()
-    console.log('----------')
+    console.log(this.$route.params.vista)
   },
 
   methods: {
