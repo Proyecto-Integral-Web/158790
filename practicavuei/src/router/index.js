@@ -6,8 +6,6 @@ import SignUp from '../views/SignUp.vue'
 import salaJuegos from '../views/games/UserArena'
 import salaPartidas from '../views/games/camposDeBatalla'
 
-// import SignUp from '../views/SignUp.vue'
-
 Vue.use(VueRouter)
 
 const routes = [{
@@ -34,9 +32,6 @@ const routes = [{
 {
   path: '/about',
   name: 'about',
-  // route level code-splitting
-  // this generates a separate chunk (about.[hash].js) for this route
-  // which is lazy-loaded when the route is visited.
   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   meta: {
     auth: true
@@ -56,9 +51,6 @@ const routes = [{
 {
   path: '/sala/:no_partida',
   name: 'UserArena',
-  // route level code-splitting
-  // this generates a separate chunk (about.[hash].js) for this route
-  // which is lazy-loaded when the route is visited.
   component: salaJuegos,
   meta: {
     auth: true
@@ -67,7 +59,6 @@ const routes = [{
 {
   path: '/partidas',
   name: 'GameArena',
-  // route level code-splitting
   component: salaPartidas,
   meta: {
     auth: true
