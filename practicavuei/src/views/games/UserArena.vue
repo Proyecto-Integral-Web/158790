@@ -1,12 +1,5 @@
 <template>
   <section class="home p-5">
-    <input
-      value="Iniciar Partida"
-      type="button"
-      class="btn btn-success"
-      @click="crearPartida"
-    />
-    <!-- <UserArena @opcion="" :userOpcion="partida.usuario_1"></UserArena>-->
     <UserArena
       v-if="!names"
       @terminar="finalizarTurno"
@@ -58,7 +51,13 @@ export default {
     next(vm => {
       vm.user = Auth.getUser()
 
-      vm.$bind('partida', partida.doc(to.params.no_partida))
+      if (to.params.no_partida === 'CrearPartida') {
+        // vm.$bind('partida', partida.add(vm.crearPartida()))
+        vm.crearPartida()
+        console.log('<<<<<<<<<<>>>>>>>>>>')
+      } else {
+        vm.$bind('partida', partida.doc(to.params.no_partida))
+      }
     })
   },
 
@@ -86,12 +85,21 @@ export default {
       this.user = Auth.getUser()
       let uid = this.user.uid
 
-      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).set({
+      var partida = {
+        abierta: true,
         participantes: [uid],
         names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
         usuario_1: '',
         usuario_2: ''
-      })
+      }
+      let partidaBD = FireApp.firestore().collection('juego1')
+
+      FireApp.firestore().collection('juego1').add(partida)
+        .then(res => {
+          this.$bind('partida', partidaBD.doc(res.id))
+        })
+
+      return partida
     },
 
     retar () {
@@ -101,6 +109,7 @@ export default {
       // *Escribe en la base de datos.
       this.partida.names.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
       this.partida.participantes.push(this.user.uid)
+      this.partida.abierta = false
 
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(this.partida)
     },
