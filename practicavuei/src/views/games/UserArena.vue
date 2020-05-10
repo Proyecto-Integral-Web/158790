@@ -96,6 +96,7 @@ export default {
 
       FireApp.firestore().collection('juego1').add(partida)
         .then(res => {
+          this.$route.params.no_partida = res.id
           this.$bind('partida', partidaBD.doc(res.id))
         })
 
@@ -119,28 +120,6 @@ export default {
         .then((result) => {
           // console.log(result.data())
         })
-    },
-
-    getOpcion (opcion) {
-      let participantes = this.partida.participantes
-
-      if (this.partida.names[participantes.indexOf(this.user.uid)] !== opcion[1]) {
-        return 0
-      }
-
-      console.log(opcion)
-      let data = {}
-      if (participantes.indexOf(this.user.uid) === 0) {
-        data = {
-          'usuario_1': opcion[0]
-        }
-      } else {
-        data = {
-          'usuario_2': opcion[0]
-        }
-      }
-
-      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
     },
 
     finalizarTurno (quien) {
