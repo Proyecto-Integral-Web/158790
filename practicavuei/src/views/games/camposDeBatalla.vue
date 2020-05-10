@@ -6,8 +6,10 @@
      Yo no lo descargo porque ya la tengo
      <input type="button" @click="retar" value="GG IZ" />
 
-     <div v-for="part in coleccionDePartidas" :key="part.id">
-         <h1>{{part}}</h1>
+     <div v-for="partida in coleccionDePartidas" :key="partida.id">
+         <Arena
+            :partida="partida"
+            ></Arena>
         ==========
      </div>
 </div>
@@ -17,6 +19,7 @@
 // import UserArena from '@/components/games/juegoPiedras'
 import FireApp from '@/config/_firebase.js'
 import Auth from '@/config/auth'
+import Arena from '@/components/games/miniaturaJuegoPiedras'
 
 const partidas = FireApp.firestore().collection('juego1')
 
@@ -24,7 +27,7 @@ export default {
   name: 'sala1',
   props: ['user_opcion'],
   components: {
-    // UserArena
+    Arena
   },
 
   data () {

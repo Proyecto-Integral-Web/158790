@@ -1,16 +1,18 @@
-  <section class="partida" :class="abierta? 'partidaAbierta': 'partidaCerrada'">
+  <section class="partida" :class="partida.abierta? 'partidaAbierta': 'partidaCerrada'">
     <div class="container-fluid pb-5">
       <div class="row">
-        <h3 class="mx-auto">{{contricante}}</h3>
+        <h3 class="mx-auto">{{partida.names[0]}}</h3>
       </div>
       <div class="col">
         <div class="col-3 mx-auto">
-          <h1>{{options[usarioOpcion]}}</h1>
+          <h1>{{options[partida.jugador_1]}}</h1>
         </div>
       </div>
       <div class="col">
         <div class="col-3 mx-auto">
-          <h1>{{options[contricanteOpcion]}}</h1>
+          <h1>{{options[partida.jugador2]}}</h1>
         </div>
       </div>
+    </div>
+    <router-link :to="'/sala/' + partida.id"> Juego</router-link>  
   </section>
