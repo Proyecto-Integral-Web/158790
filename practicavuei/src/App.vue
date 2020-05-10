@@ -5,7 +5,8 @@
       <router-link :to="{name: 'about'}"> About</router-link> |
       <router-link :to="{name: 'profile'}"> Perfil</router-link> |
       <router-link to="/sala/CrearPartida"> Crear</router-link> |
-      <router-link to="/partidas"> Salas</router-link>
+      <router-link to="/partidas/abiertas"> Salas abiertas</router-link> |
+      <router-link to="/partidas/misSalas"> Mis partidas</router-link>
     </div>
     <div class="container-fluid">
       <router-view />

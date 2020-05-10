@@ -57,7 +57,7 @@ const routes = [{
   }
 },
 {
-  path: '/partidas',
+  path: '/partidas/:vista',
   name: 'GameArena',
   component: salaPartidas,
   meta: {

@@ -1,9 +1,5 @@
 <template>
 <div>
-     Esto solo es texto de relleno
-     No srive mas que para mostrar una pantalla pitera
-     Compren en Cyberpuerta o PCX.com.mx sus piezas, apoyen el negocio local
-     Yo no lo descargo porque ya la tengo
      <input type="button" @click="retar" value="GG IZ" />
 
      <div v-for="partida in coleccionDePartidas" :key="partida.id">
@@ -35,6 +31,7 @@ export default {
       partida: {},
       partidas: [],
       coleccionDePartidas: [],
+      coleccionDePartidasSecundaria: [],
       user: {}
     }
   },
@@ -44,7 +41,15 @@ export default {
     next(vm => {
       vm.user = Auth.getUser()
 
-      vm.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
+      if (to.params.vista === 'abiertas') {
+        vm.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
+      }
+      if (to.params.vista === 'misSalas') {
+        vm.$bind('coleccionDePartidas', partidas.where('participantes.0', '==', vm.user.uid))
+        vm.$bind('coleccionDePartidasSecundaria', partidas.where('participantes.1', '==', vm.user.uid))
+      }
+
+      // vm.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
     })
   },
 
