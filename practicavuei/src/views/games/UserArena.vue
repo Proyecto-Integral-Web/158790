@@ -1,5 +1,11 @@
 <template>
   <section class="home p-5">
+  <input
+      type="button"
+      class="btn btn-outline-primary"
+      value="Checar ganador"
+      @click="verificarGanador"
+    >
     <UserArena
       v-if="!names"
       @terminar="finalizarTurno"
@@ -120,6 +126,33 @@ export default {
         .then((result) => {})
     },
 
+    verificarGanador () {
+      let retador = this.partida.usuario_1
+      let contricante = this.partida.usuario_2
+
+      var data = {}
+
+      if (!retador && !contricante) {
+        return 0
+      }
+
+      if (retador === contricante) {
+        data = {
+          ganador: 'Empate'
+        }
+      } else if ((retador === 't' && contricante === 'pp') || (retador === 'pp' && contricante === 'p') || (retador === 'p' && contricante === 't')) {
+        data = {
+          ganador: this.partida.retador
+        }
+      } else {
+        data = {
+          ganador: this.partida.contricante
+        }
+      }
+
+      FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
+    },
+
     finalizarTurno (quien) {
       let participantes = [this.partida.retador, this.partida.contricante]
       console.log(quien)
@@ -140,6 +173,7 @@ export default {
       }
 
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
+      this.verificarGanador()
     }
   }
 }
