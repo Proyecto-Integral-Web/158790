@@ -175,6 +175,7 @@ export default {
 </script>
 
 <style lang="scss">
+/*
 body {
   background-image: url("../../assets/wall1.jpg") !important;
 
@@ -184,4 +185,5 @@ body {
 .partida {
   background-color: whitesmoke;
 }
+*/
 </style>

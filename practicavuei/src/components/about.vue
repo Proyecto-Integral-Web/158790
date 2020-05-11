@@ -38,13 +38,13 @@ export default {
 </script>
 
 <style lang="scss">
-.fotoPerfil {
+/*.fotoPerfil {
   width: 90%;
   border-radius: 100%;
   margin: auto;
   margin-bottom: 30px;
   margin-top: 10px;
-}
+}*/
 
 @import "./recursos/css/master.scss"
 </style>

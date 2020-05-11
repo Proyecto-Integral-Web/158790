@@ -1,7 +1,9 @@
+$black: rgba(255, 255, 255, 0.0); 
+
 body {
-    background-image: #090909 !important;
+    background-color: $black !important;
   
-    background-image: url("../assets/wall1.jpg") !important;
+    background-image: url("../assets/Login.jpg") !important;
   
     background-size: 100%;
 }
