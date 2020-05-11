@@ -5,7 +5,7 @@
 export default {
   name: 'sala1',
 
-  props: ['userOpcion', 'displayName', 'turnoTerminado'],
+  props: ['userOpcion', 'displayName', 'turnoTerminado', 'mostrarOpcionesJugador'],
 
   data () {
     return {

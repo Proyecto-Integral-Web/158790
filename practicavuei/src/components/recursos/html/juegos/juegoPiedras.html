@@ -14,6 +14,7 @@
             <div
               class="col col-sm-4 opcion p-3"
               v-for="(option, key) in options"
+              v-if="mostrarOpcionesJugador"
               :key="key"
               @click="select(key)"
             >
@@ -26,7 +27,10 @@
       <br />
       <div class="row">
         <div class="col-6 mx-auto">
-          <input type="button" class="btn" @click="terminar" value="Terminar turno" :class="turnoTerminado ? 'btn-danger': 'btn-success'"/>
+          <input type="button" class="btn"
+	    v-if="mostrarOpcionesJugador"
+	    @click="terminar" value="Terminar turno"
+	    :class="turnoTerminado ? 'btn-danger': 'btn-success'"/>
         </div>
       </div>
     </div>

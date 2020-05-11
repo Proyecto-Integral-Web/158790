@@ -6,6 +6,7 @@
       :userOpcion="(partida.retador === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
       :turnoTerminado="partida.usuario_1_fin"
       :displayName="(partida.retador === this.user.uid) ? this.user.displayName: partida.names[0]"
+      :mostrarOpcionesJugador="partida.retador === this.user.uid"
     ></UserArena>
     <input
       type="button"
@@ -19,6 +20,7 @@
       :turnoTerminado="partida.usuario_2_fin"
       :displayName="(partida.contricante === this.user.uid) ? this.user.displayName: partida.names[1]"
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
+      :mostrarOpcionesJugador="partida.contricante === this.user.uid"
       @terminar="finalizarTurno"
     ></UserArena>
   </section>
