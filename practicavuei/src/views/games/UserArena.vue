@@ -1,11 +1,5 @@
 <template>
   <section class="home p-5">
-  <input
-      type="button"
-      class="btn btn-outline-primary"
-      value="Checar ganador"
-      @click="verificarGanador"
-    >
     <UserArena
       v-if="!names"
       @terminar="finalizarTurno"
