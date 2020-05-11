@@ -90,7 +90,8 @@ export default {
         retador: uid,
         contricante: '',
         usuario_1: '',
-        usuario_2: ''
+        usuario_2: '',
+        ganador: ''
       }
       let partidaBD = FireApp.firestore().collection('juego1')
 
