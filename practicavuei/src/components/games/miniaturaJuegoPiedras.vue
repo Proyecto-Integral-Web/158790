@@ -22,6 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
+/*
 .partida {
   border-radius: 25px;
 
@@ -48,4 +49,5 @@ export default {
     }
   }
 }
+*/
 </style>
