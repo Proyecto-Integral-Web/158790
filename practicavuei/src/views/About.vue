@@ -1,7 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is an {{$route.name}} page</h1>
-    <input type="button" value="Cerrrar Sessión" @click="logOut" class="btn btn-danger" />
+  <div class="about"><br><br><br><br><br><br><br><br>
+    <h6>Para cerrar sesión pulse el botón rojo.</h6>
+    <input type="button" value="Cerrar Sesión" @click="logOut" class="btn btn-danger" />
   </div>
 </template>
 

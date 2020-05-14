@@ -2,6 +2,7 @@
     <header>
       <div class="logo"></div>
     </header>
+    
     <section class="col ">
       <div class="fotoPerfil"><img
           :src="photoURL"
@@ -14,9 +15,9 @@
         class="form-control"
         v-model="photoURL"
       />
-      <h3>{{usuario.displayName}}</h3>
+      <h3>{{usuario.displayName}}</h3> 
       <div class="contenEntrada">
-        <p>Correo</p>
+        <p class="pStyle">Correo</p>
         <input
           type="email"
           placeholder="olivia.jhonson@oliv.co.m"
@@ -25,7 +26,7 @@
         />
       </div>
       <div class="contenEntrada">
-        <p>Nombre de usuario</p>
+        <p class="pStyle">Usuario</p>
         <input
           type="text"
           placeholder="nombre mostrado"
@@ -34,7 +35,7 @@
         />
       </div>
       <div class="mb-2">
-        <p>Contraseña</p>
+        <p class="pStyle">Contraseña</p>
         <input
           type="password"
           placeholder="Contraseña"
@@ -43,7 +44,7 @@
         />
       </div>
       <div class="contenEntrada">
-        <p>Numero telefonico</p>
+        <p class="pStyle">Celular</p>
         <input
           type="cellpbhone"
           placeholder="(656) 123 4567"

@@ -1,13 +1,8 @@
 <template>
   <div class="home p-3">
     <div class="row">
-      <div class="col col-4">
         <viewProfile></viewProfile>
-      </div>
-      <div class="col col-4">
         <about></about>
-      </div>
-      <div class="col col-4"></div>
     </div>
 
   </div>
