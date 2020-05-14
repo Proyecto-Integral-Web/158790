@@ -16,12 +16,36 @@ body {
       background: rgb(47, 0, 100)  !important;
     }
   }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .contBloque {
-    border-radius: 15px;
+    //border-radius: 15px;
     background-color: $transparentWhite !important;
     color: whitesmoke !important;
     margin: 5%;
+  }
+
+  .contBloquePerfil {
+    background-color: $transparentWhite !important;
+    color: whitesmoke !important;
+    border-radius: 25px;
+    margin: 10px;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //display: inline;
+  }
+
+  .colPerfil {
+
+    display: inline-block;
   }
   
   .contenEntrada {

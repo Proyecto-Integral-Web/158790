@@ -1,14 +1,15 @@
 <template>
-  <section class="contBloque">
+  <section class="contBloquePerfil">
     <header>
       <div class="logo"></div>
     </header>
-    <section class="col ">
-      <h3>Nombre: {{usuario.displayName}}</h3>
-
+    <section class="col colPerfil">
+      <!--<h3>Nombre: {{usuario.displayName}}</h3>-->
       <div class="fotoPerfil"><img
-          :src="usuario.photoURL ||'../assets/logo.png'"
+          :src="usuario.photoURL ||'../assets/user.png'"
           class="fotoPerfil"
+          type="url"
+          :placeholder="usuario.photoURL || '../assets/user.png'"
         /></div>
     </section>
   </section>
