@@ -4,7 +4,7 @@
       v-if="!names"
       @terminar="finalizarTurno"
       :userOpcion="(partida.retador === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
-      :turnoTerminado="partida.usuario_1_fin"
+      :turnoTerminado="partida.usuario_1"
       :displayName="(partida.retador === this.user.uid) ? this.user.displayName: partida.names[0]"
       :mostrarOpcionesJugador="partida.retador === this.user.uid"
     ></UserArena>
@@ -17,7 +17,7 @@
     >
     <UserArena
       v-if="!partidas.contricante && (partida.retador != this.user.uid)"
-      :turnoTerminado="partida.usuario_2_fin"
+      :turnoTerminado="partida.usuario_2"
       :displayName="(partida.contricante === this.user.uid) ? this.user.displayName: partida.names[1]"
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       :mostrarOpcionesJugador="partida.contricante === this.user.uid"
@@ -121,6 +121,7 @@ export default {
     },
 
     finalizarTurno (quien) {
+      console.log('Logrando emmitir particulas')
       let participantes = [this.partida.retador, this.partida.contricante]
       console.log(quien)
 
@@ -130,31 +131,29 @@ export default {
 
       let data = {}
       if (participantes.indexOf(this.user.uid) === 0) {
+        if (this.partida.usario_1) {
+          console.log('[[[[[[Logrando emmitir particulas')
+          return 0
+        }
         data = {
           'usuario_1': quien[0]
         }
       } else {
+        if (!this.partida.usario_2) {
+          return 0
+        }
         data = {
           'usuario_2': quien[0]
         }
       }
 
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
+      console.log('-------Logrando emmitir particulas------------')
     }
   }
 }
 </script>
 
 <style lang="scss">
-/*
-body {
-  background-image: url("../../assets/wall1.jpg") !important;
 
-  background-size: 100%;
-}
-
-.partida {
-  background-color: whitesmoke;
-}
-*/
 </style>
