@@ -30,7 +30,7 @@ export default {
 
   data () {
     return {
-      // se usan dos variables ddiferentes por no existir operandos logicos en FireBase, solo de comparacion 
+      // se usan dos variables ddiferentes por no existir operandos logicos en FireBase, solo de comparacion
       coleccionDePartidas: [],
       coleccionDePartidasSecundaria: [], // variable de ayuda
       user: {}
