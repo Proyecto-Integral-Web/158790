@@ -6,10 +6,8 @@
     <section class="col colPerfil">
       <!--<h3>Nombre: {{usuario.displayName}}</h3>-->
       <div class="fotoPerfil"><img
-          :src="usuario.photoURL ||'../assets/user.png'"
+          :src="usuario.photoURL || require('../assets/user.png')"
           class="fotoPerfil"
-          type="url"
-          :placeholder="usuario.photoURL || '../assets/user.png'"
         /></div>
     </section>
   </section>
