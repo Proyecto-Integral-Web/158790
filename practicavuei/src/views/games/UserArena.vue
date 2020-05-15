@@ -16,7 +16,7 @@
       v-if="!partida.names[1] && (partida.retador != this.user.uid)"
     >
     <UserArena
-      v-if="!partidas.contricante && (partida.retador != this.user.uid)"
+      v-if="!partidas.contricante"
       :turnoTerminado="partida.usuario_2"
       :displayName="(partida.contricante === this.user.uid) ? this.user.displayName: partida.names[1]"
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
@@ -137,11 +137,11 @@ export default {
         }
       } else if ((retador === 't' && contricante === 'pp') || (retador === 'pp' && contricante === 'p') || (retador === 'p' && contricante === 't')) {
         data = {
-          ganador: this.partida.retador
+          ganador: this.partida.conricante
         }
       } else {
         data = {
-          ganador: this.partida.contricante
+          ganador: this.partida.retador
         }
       }
 
