@@ -4,7 +4,7 @@
       v-if="!names"
       @terminar="finalizarTurno"
       :userOpcion="(partida.retador === this.user.uid) ? partida.usuario_1: (partida.usuario_1 && partida.usuario_2) ? partida.usuario_1: ''"
-      :turnoTerminado="partida.usuario_1_fin"
+      :turnoTerminado="partida.usuario_1"
       :displayName="(partida.retador === this.user.uid) ? this.user.displayName: partida.names[0]"
       :mostrarOpcionesJugador="partida.retador === this.user.uid"
     ></UserArena>
@@ -17,7 +17,7 @@
     >
     <UserArena
       v-if="!partidas.contricante && (partida.retador != this.user.uid)"
-      :turnoTerminado="partida.usuario_2_fin"
+      :turnoTerminado="partida.usuario_2"
       :displayName="(partida.contricante === this.user.uid) ? this.user.displayName: partida.names[1]"
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
       :mostrarOpcionesJugador="partida.contricante === this.user.uid"
@@ -175,13 +175,5 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background-image: url("../../assets/wall1.jpg") !important;
 
-  background-size: 100%;
-}
-
-.partida {
-  background-color: whitesmoke;
-}
 </style>

@@ -1,7 +1,5 @@
 <template>
 <div>
-     <input type="button" @click="retar" value="GG IZ" />
-
      <div v-for="partida in coleccionDePartidas" :key="partida.id">
          <Arena
             :partida="partida"
@@ -101,6 +99,7 @@ export default {
 </script>
 
 <style lang="scss">
+/*
 body {
   background-image: url("../../assets/wall1.jpg") !important;
 
@@ -110,4 +109,5 @@ body {
 .partida {
   background-color: whitesmoke;
 }
+*/
 </style>

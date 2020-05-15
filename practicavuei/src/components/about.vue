@@ -1,13 +1,12 @@
 <template>
-  <section class="contBloque">
+  <section class="contBloquePerfil">
     <header>
       <div class="logo"></div>
     </header>
-    <section class="col ">
-      <h3>Nombre: {{usuario.displayName}}</h3>
-
+    <section class="col colPerfil">
+      <!--<h3>Nombre: {{usuario.displayName}}</h3>-->
       <div class="fotoPerfil"><img
-          :src="usuario.photoURL ||'../assets/logo.png'"
+          :src="usuario.photoURL || require('../assets/user.png')"
           class="fotoPerfil"
         /></div>
     </section>
@@ -38,13 +37,5 @@ export default {
 </script>
 
 <style lang="scss">
-.fotoPerfil {
-  width: 90%;
-  border-radius: 100%;
-  margin: auto;
-  margin-bottom: 30px;
-  margin-top: 10px;
-}
-
 @import "./recursos/css/master.scss"
 </style>

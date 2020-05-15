@@ -1,26 +1,24 @@
+$transparentWhite: rgba(255, 255, 255, 0.6); 
 .partida {
     border-radius: 25px;
   
-    color: #AAA;
+    color: whitesmoke;
   
-    background-color: rgba(25, 25, 25, 0.9) !important;
+    background-color: $transparentWhite;
   }
   
   .contBloque {
-    width: 100%;
+    width: 400px;
     height: 500px;
-  
     border-radius: 50px;
-  
-    background-color: gray;
   }
   
   .opciones {
-    background: grey;
+    background: white;
     .opcion {
       cursor: pointer;
       &:hover {
-        background: darkgray;
+        background:  rgb(91, 7, 94) ;
       }
     }
   }

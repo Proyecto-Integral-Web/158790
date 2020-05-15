@@ -2,57 +2,57 @@
 class="contBloque"
 :class="hasErrors ? 'animated tada': ''"
 >
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
 <header>
   <div class="logo"></div>
 </header>
 <section class="col ">
+  <br><br>
   <h3>Iniciar sesion</h3>
   <AlertsComponent
     :error="hasErrors"
     :message="errMessage"
   >
-
   </AlertsComponent>
+  <br>
   <div class="contenEntrada">
-    <p>Correo</p>
+    <p class="pStyle">Correo</p>
     <input
       type="email"
-      placeholder="olivia.jhonson@oliv.co.m"
+      placeholder="Escribe tu correo"
       class="form-control"
       v-model="usuario.email"
       @keypress="hasErrors = false"
     />
   </div>
   <div class="mb-2">
-    <p>Contraseña</p>
+    <p class="pStyle">Contraseña</p>
     <input
       type="password"
-      placeholder="Contraseña"
+      placeholder="Escribe tu contraseña"
       class="form-control"
       v-model="usuario.password"
       @keypress.enter="login"
     />
   </div>
-  <p>¿Contraseña olvidada? <router-link
+  <router-link
       :to="{name: 'SignUp'}"
       :class="$route.name=='about'?'btn':''"
-    >Reiniciala aquí</router-link>
-  </p>
+    ><p class="pStyle02">¿Contraseña olvidada?</p></router-link>
+    <br><br>
   <input
     type="button"
     value="Entrar"
     class="btn btn-block btn-rosa"
     @click="login"
   />
-  <br />
-  <input type="checkbox" /> Receurdame
-  <div class="contRedesAlternativas">
-    <h5>
+  <p class="pStyle03">¿No tienes una cuenta?
       <router-link
         :to="{name: 'SignUp'}"
         :class="$route.name=='SignUp'?'btn':'' "
-      >¡¡¡Registrate!!!</router-link>
-    </h5>
+      ><div class="pStyle04">¡Regístrate!</div></router-link></p>
     <div class="logoRed Face"></div>
     <div class="logoRed Twitter"></div>
   </div>
