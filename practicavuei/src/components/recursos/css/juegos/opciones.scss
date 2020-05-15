@@ -27,9 +27,46 @@ $transparentWhite: rgba(255, 255, 255, 0.6);
   }
 
   .partidaAbierta {
-    background-color: rgba(255, 255, 255, 0.6);
+    //Está se queda igual, como habíamos dicho, no?
   }
 
+  //---
+
   .partidaCerrada {
-    background-color: rgba(255, 116, 116, 0.6);
+    background-color: rgba(160, 160, 160, 0.6);
   }
+
+  .textoGris { //Agregar esta clase a los h3 y a los p ya que el color de texto de las partidas no las agarra.
+    color:  rgb(54, 54, 54);
+  }
+
+  //---
+  .resultadoGanador {
+    background-color: rgba(255, 221, 31, 0.6);
+  }
+
+  .textoDorado {
+    color: #efb810;
+  }
+
+  //---
+
+  .resultadoEmpate {
+    background-color: rgba(255, 161, 98, 0.6);
+  }
+
+  .textoNaranja {
+    color: rgb(255, 102, 0);
+  }
+
+  //---
+
+  .resultadoPerdedor {
+    background-color: rgba(255, 98, 98, 0.6);
+  }
+
+  .textoRojo {
+    color: red;
+  }
+
+
