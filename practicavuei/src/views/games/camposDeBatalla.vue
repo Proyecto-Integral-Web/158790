@@ -70,11 +70,14 @@ export default {
         this.user = Auth.getUser()
         if (value.vista === 'abiertas') {
           this.coleccionDePartidas = []
+          this.coleccionDePartidasSecundaria = []
+
           this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
         }
         if (value.vista === 'misSalas') {
           this.coleccionDePartidas = []
           this.coleccionDePartidasSecundaria = []
+
           this.$bind('coleccionDePartidas', partidas.where('retador', '==', this.user.uid))
           this.$bind('coleccionDePartidasSecundaria', partidas.where('contricante', '==', this.user.uid))
         }
