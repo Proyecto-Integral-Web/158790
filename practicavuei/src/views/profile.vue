@@ -1,8 +1,8 @@
 <template>
   <div class="home p-3">
     <div class="row">
-        <viewProfile></viewProfile>
         <about></about>
+        <viewProfile></viewProfile>
     </div>
 
   </div>

@@ -2,10 +2,11 @@ $transparentWhite: rgba(255, 255, 255, 0.6);
 
 body {
     background-color: black !important;
-  
     background-image: url("../assets/Login.jpg") !important;
-  
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
 }
 
 .btn-rosa {
@@ -22,12 +23,19 @@ body {
     justify-content: center;
     align-items: center;
   }
-  
+
+  .col-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .contBloque {
     //border-radius: 15px;
     background-color: $transparentWhite !important;
     color: whitesmoke !important;
-    margin: 5%;
+    //width: 400px;
+    //height: 500px;
   }
 
   .contBloquePerfil {
@@ -40,14 +48,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    //display: inline;
   }
 
-  .colPerfil {
-
-    display: inline-block;
-  }
-  
   .contenEntrada {
     margin-bottom: 15px;
   }
@@ -90,6 +92,17 @@ body {
   }
 
   
+  p.pStyle05 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(88, 11, 175); 
+    &:hover {
+      color: rgb(164, 85, 255); 
+      text-decoration: none !important;
+    }
+  }
+
+  
   a {
    color: rgb(91, 7, 94);
    text-decoration: none;
@@ -98,7 +111,11 @@ body {
     text-decoration: none !important;
   }
 }
-  
 
-
-  
+.partida { //Hijo
+  background-color: $transparentWhite !important;
+  color: whitesmoke !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
