@@ -15,6 +15,17 @@
       @click="retar"
       v-if="!partida.names[1] && (partida.retador != this.user.uid)"
     >
+    <input
+      type="button"
+      class="btn btn-outline-primary"
+      value="verificar"
+      @click="verificarGanador"
+    >
+
+    <div>
+      {{partida.ganador}}
+    </div>
+
     <UserArena
       v-if="!partidas.contricante"
       :turnoTerminado="partida.usuario_2"
@@ -168,7 +179,9 @@ export default {
       }
 
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
-      this.verificarGanador()
+        .then(res => {
+          this.verificarGanador()
+        })
     }
   }
 }
