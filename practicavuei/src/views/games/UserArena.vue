@@ -16,7 +16,7 @@
       v-if="!partida.names[1] && (partida.retador != this.user.uid)"
     >
     <UserArena
-      v-if="!partidas.contricante"
+      v-if="partida.names[1] && partida.retador"
       :turnoTerminado="partida.usuario_2"
       :displayName="(partida.contricante === this.user.uid) ? this.user.displayName: partida.names[1]"
       :userOpcion="(partida.contricante === this.user.uid) ? partida.usuario_2 : (partida.usuario_1 && partida.usuario_2) ? (partida.usuario_1 != '') ? partida.usuario_2: '': ''"
