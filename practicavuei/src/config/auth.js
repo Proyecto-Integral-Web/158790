@@ -43,7 +43,7 @@ export default {
     await fireApp.auth().signInWithEmailAndPassword(data.email, data.password)
       .then((result) => {
         console.log(result)
-        router.push('about')
+        router.push('profile')
       })
       .catch((err) => {
         return Promise.reject(err)
