@@ -5,7 +5,7 @@
 export default {
   name: 'sala1',
 
-  props: ['partida'],
+  props: ['partida'], // aqui recivo toda la informacion de la partida para que esta vista se engargue de manejarla
 
   data () {
     return {

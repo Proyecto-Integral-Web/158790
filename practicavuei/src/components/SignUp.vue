@@ -27,11 +27,11 @@ export default {
     signUp () {
       Auth.signUp(this.usuario)
 
-      this.$router.push({ name: 'about' })
+      this.$router.push({ name: 'profile' })
     },
 
     login () {
-      console.log(this.usuario)
+      // console.log(this.usuario)
     }
   }
 }

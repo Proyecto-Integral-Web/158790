@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     login () {
-      Auth.login(this.usuario)
+      Auth.login(this.usuario) // para hacer login al usuairo y mantener la sesion abierta
     },
     updateData () {
 

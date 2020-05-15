@@ -22,9 +22,9 @@ export default {
         this.userOpcion = key
       }
     },
-    terminar () {
-      if (this.userOpcion !== '') {
-        this.$emit('terminar', [this.userOpcion, this.displayName])
+    terminar () { // para emitir y bloquear la opcion escogida del usuairo
+      if (this.userOpcion !== '') { // auqi preguntamos si no ha finalizado su turno
+        this.$emit('terminar', [this.userOpcion, this.displayName]) // aqui enviamos quien y que opcion escogio
         this.turnoTerminado = true
       }
     }

@@ -11,7 +11,7 @@ export default {
   name: 'About',
 
   methods: {
-    logOut () {
+    logOut () { // funcion para cerrar sesion.
       return Auth.logOut()
     }
   }
