@@ -1,7 +1,5 @@
 <template>
 <div>
-     <input type="button" @click="retar" value="GG IZ" />
-
      <div v-for="partida in coleccionDePartidas" :key="partida.id">
          <Arena
             :partida="partida"

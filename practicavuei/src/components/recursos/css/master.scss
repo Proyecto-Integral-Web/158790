@@ -24,12 +24,18 @@ body {
     align-items: center;
   }
 
+  .col-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .contBloque {
     //border-radius: 15px;
     background-color: $transparentWhite !important;
     color: whitesmoke !important;
-    width: 400px;
-    height: 500px;
+    //width: 400px;
+    //height: 500px;
   }
 
   .contBloquePerfil {
@@ -86,6 +92,17 @@ body {
   }
 
   
+  p.pStyle05 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(88, 11, 175); 
+    &:hover {
+      color: rgb(164, 85, 255); 
+      text-decoration: none !important;
+    }
+  }
+
+  
   a {
    color: rgb(91, 7, 94);
    text-decoration: none;
@@ -95,10 +112,6 @@ body {
   }
 }
 
-.container-fluid { //Padre
-  
-}
-  
 .partida { //Hijo
   background-color: $transparentWhite !important;
   color: whitesmoke !important;

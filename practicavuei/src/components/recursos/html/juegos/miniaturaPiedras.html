@@ -3,9 +3,11 @@
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <div class="container-fluid pb-5">
+      <br>
       <div class="row">
         <h3 class="mx-auto">{{partida.names[0]}}</h3>
       </div>
+      <br>
       <div class="col">
         <div class="col-3 mx-auto">
           <h1>{{((partida.jugador_1 != '') && (partida.jugador_2 != '')) ? options[partida.jugador_1]: ''}}</h1>
@@ -16,6 +18,12 @@
           <h1>{{((partida.jugador_1 != '') && (partida.jugador_2 != '')) ? options[partida.jugador2]: ''}}</h1>
         </div>
       </div>
+      <br>
+      <div class="class">
+        <div class="col-3 mx-auto">
+          <router-link :to="'/sala/' + partida.id"><p class="pStyle05">Juego</p></router-link>  
+        </div>
+      </div>
+      <br>
     </div>
-    <router-link :to="'/sala/' + partida.id"> Juego</router-link>  
   </section>
