@@ -121,7 +121,6 @@ export default {
     },
 
     finalizarTurno (quien) {
-      console.log('Logrando emmitir particulas')
       let participantes = [this.partida.retador, this.partida.contricante]
       console.log(quien)
 
@@ -131,24 +130,16 @@ export default {
 
       let data = {}
       if (participantes.indexOf(this.user.uid) === 0) {
-        if (this.partida.usario_1) {
-          console.log('[[[[[[Logrando emmitir particulas')
-          return 0
-        }
         data = {
           'usuario_1': quien[0]
         }
       } else {
-        if (!this.partida.usario_2) {
-          return 0
-        }
         data = {
           'usuario_2': quien[0]
         }
       }
 
       FireApp.firestore().collection('juego1').doc(this.$route.params.no_partida).update(data)
-      console.log('-------Logrando emmitir particulas------------')
     }
   }
 }
