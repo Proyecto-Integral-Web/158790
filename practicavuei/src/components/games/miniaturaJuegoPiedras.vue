@@ -5,7 +5,7 @@
 export default {
   name: 'sala1',
 
-  props: ['partida'],
+  props: ['partida', 'uid'], // aqui recivo toda la informacion de la partida para que esta vista se engargue de manejarla
 
   data () {
     return {
@@ -22,32 +22,5 @@ export default {
 </script>
 
 <style lang="scss">
-/*
-.partida {
-  border-radius: 25px;
-
-  color: #AAA;
-
-  background-color: rgba(25, 25, 25, 0.9) !important;
-}
-
-.contBloque {
-  width: 100%;
-  height: 500px;
-
-  border-radius: 50px;
-
-  background-color: gray;
-}
-
-.opciones {
-  background: grey;
-  .opcion {
-    cursor: pointer;
-    &:hover {
-      background: darkgray;
-    }
-  }
-}
-*/
+@import "../recursos/css/juegos/opciones.scss"
 </style>

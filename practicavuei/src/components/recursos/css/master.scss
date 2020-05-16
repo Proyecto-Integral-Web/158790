@@ -1,28 +1,55 @@
-$black: rgba(255, 255, 255, 0.0); 
+$transparentWhite: rgba(255, 255, 255, 0.6); 
 
 body {
-    background-color: $black !important;
-  
+    background-color: black !important;
     background-image: url("../assets/Login.jpg") !important;
-  
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
 }
 
 .btn-rosa {
-    background-color: purple !important;
+    background-color: rgb(91, 7, 94) !important;
+    font-weight: bold;
     color: whitesmoke !important;
     &:hover {
-      background: rgb(71, 3, 73) !important;
+      background: rgb(47, 0, 100)  !important;
     }
   }
-  
-  .contBloque {
-    border-radius: 15px;
-    background-color: #222 !important;
-    color: whitesmoke !important;
-    margin: 5%;
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  
+
+  .col-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contBloque {
+    //border-radius: 15px;
+    background-color: $transparentWhite !important;
+    color: whitesmoke !important;
+    //width: 400px;
+    //height: 500px;
+  }
+
+  .contBloquePerfil {
+    background-color: $transparentWhite !important;
+    color: whitesmoke !important;
+    border-radius: 25px;
+    margin: 10px;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .contenEntrada {
     margin-bottom: 15px;
   }
@@ -35,4 +62,60 @@ body {
     margin-top: 10px;
   }
 
+  h3 {
+    color: rgb(91, 7, 94);
+    font-weight: bold;
+  }
+
+  p.pStyle{
+    color: rgb(47, 0, 100);
+    text-align: left;
+    line-height: 30%;
+    font-size: 18px;
+  }
+
+  p.pStyle02 {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  p.pStyle03 {
+    color: rgb(47, 0, 100);
+    line-height: 50px;
+  }
+
   
+  .pStyle04 {
+    font-weight: bold;
+    line-height: 10px;
+    font-size: 18px;
+  }
+
+  
+  p.pStyle05 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(88, 11, 175); 
+    &:hover {
+      color: rgb(164, 85, 255); 
+      text-decoration: none !important;
+    }
+  }
+
+  
+  a {
+   color: rgb(91, 7, 94);
+   text-decoration: none;
+   &:hover {
+    color: rgb(88, 11, 175); 
+    text-decoration: none !important;
+  }
+}
+
+.partida { //Hijo
+  background-color: $transparentWhite ;
+  color: whitesmoke !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

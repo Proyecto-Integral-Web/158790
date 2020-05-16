@@ -1,15 +1,15 @@
 <template>
 <div>
-     <input type="button" @click="retar" value="GG IZ" />
-
      <div v-for="partida in coleccionDePartidas" :key="partida.id">
          <Arena
             :partida="partida"
+            :uid="user.uid"
             ></Arena>
      </div>
      <div v-for="partida in coleccionDePartidasSecundaria" :key="partida.id">
          <Arena
             :partida="partida"
+            :uid="user.uid"
             ></Arena>
      </div>
 </div>
@@ -32,10 +32,9 @@ export default {
 
   data () {
     return {
-      partida: {},
-      partidas: [],
+      // se usan dos variables ddiferentes por no existir operandos logicos en FireBase, solo de comparacion
       coleccionDePartidas: [],
-      coleccionDePartidasSecundaria: [],
+      coleccionDePartidasSecundaria: [], // variable de ayuda
       user: {}
     }
   },
@@ -70,13 +69,18 @@ export default {
       immediate: true,
       handler (value) {
         this.user = Auth.getUser()
-        if (value.vista === 'abiertas') {
-          this.coleccionDePartidas = []
-          this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
-        }
-        if (value.vista === 'misSalas') {
+        if (value.vista === 'abiertas') { // para cargar las partidas disponibles para jugar
           this.coleccionDePartidas = []
           this.coleccionDePartidasSecundaria = []
+          // limpio la base de datos para evitar fitltracion de datos
+
+          this.$bind('coleccionDePartidas', partidas.where('abierta', '==', true))
+        }
+        if (value.vista === 'misSalas') { // para cargar las partidas hechas por el usaurio
+          this.coleccionDePartidas = []
+          this.coleccionDePartidasSecundaria = []
+          // limpio la base de datos para evitar fitltracion de datos
+
           this.$bind('coleccionDePartidas', partidas.where('retador', '==', this.user.uid))
           this.$bind('coleccionDePartidasSecundaria', partidas.where('contricante', '==', this.user.uid))
         }
@@ -91,10 +95,6 @@ export default {
 
   methods: {
     crearPartida () {
-    },
-
-    retar () {
-      this.user = Auth.getUser()
     }
   }
 }

@@ -10,35 +10,38 @@ class="contBloque"
     :error="hasErrors"
     :message="errMessage"
   ></AlertsComponent>
-  <h3>Registrarse</h3>
+  <br><br>
+  <h3>Registro</h3>
+  <br>
   <div class="contenEntrada">
-    <p>Nombre de usuario</p>
+    <p class="pStyle">Nombre de usuario</p>
     <input
       type="email"
-      placeholder="Correo"
+      placeholder="Escribe tu nombre"
       class="form-control"
       v-model="usuario.email"
     />
   </div>
   <div class="contenEntrada">
-    <p>Correo electronico</p>
+    <p class="pStyle">Correo electronico</p>
     <input
       type="text"
-      placeholder="Nombre"
+      placeholder="Escribe tu correo"
       class="form-control"
       v-model="usuario.nombre"
     />
   </div>
   <div class="mb-2">
-    <p>Contraseña</p>
+    <p class="pStyle">Contraseña</p>
     <input
       type="password"
-      placeholder="Contraseña"
+      placeholder="Escribe tu contraseña"
       class="form-control"
       v-model="usuario.password"
       @keypress.enter="signUp"
     />
   </div>
+  <br><br>
   <input
     type="button"
     value="Registrarse"
@@ -46,11 +49,5 @@ class="contBloque"
     @click="signUp"
   />
   <br />
-  <input type="checkbox" /> Receurdame
-  <div class="contRedesAlternativas">
-    <h5>Entra con tus redes sociales</h5>
-    <div class="logoRed Face"></div>
-    <div class="logoRed Twitter"></div>
-  </div>
 </section>
 </section>

@@ -27,7 +27,7 @@ export default {
       Auth.login(this.usuario)
     },
 
-    updateData () {
+    updateData () { // para actualizar la informacion basica del usuario
       this.usuario.updateProfile({
         displayName: this.displayName,
         photoURL: this.photoURL,

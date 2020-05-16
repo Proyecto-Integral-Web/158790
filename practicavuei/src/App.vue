@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{name: 'about'}"> About</router-link> |
+      <router-link to="/">Inicio</router-link> |
       <router-link :to="{name: 'profile'}"> Perfil</router-link> |
       <router-link to="/sala/CrearPartida"> Crear</router-link> |
       <router-link to="/partidas/abiertas"> Salas abiertas</router-link> |
-      <router-link to="/partidas/misSalas"> Mis partidas</router-link>
+      <router-link to="/partidas/misSalas"> Mis partidas</router-link> |
+      <router-link :to="{name: 'about'}"> Salir</router-link>
     </div>
     <div class="container-fluid">
       <router-view />
@@ -20,7 +20,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: whitesmoke;
+}
+
+body {
+  background-image: url("assets/Login.jpg") !important;
 }
 
 #nav {
@@ -28,10 +32,10 @@
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #ffffff;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #E7A99A;
     }
   }
 }

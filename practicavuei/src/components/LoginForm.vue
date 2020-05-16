@@ -25,7 +25,7 @@ export default {
 
   methods: {
     login () {
-      Auth.login(this.usuario)
+      Auth.login(this.usuario) // Checa que el usario pueda iniciar sesion correctamente, caso contrario expone el error
         .catch((error) => {
           console.log(error.code + ':' + error.message)
           this.hasErrors = true
