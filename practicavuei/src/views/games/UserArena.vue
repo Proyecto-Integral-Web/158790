@@ -127,7 +127,10 @@ export default {
 
       var data = {}
 
-      if (!retador && !contricante) {
+      console.log('Emepzamos')
+
+      if (!retador || !contricante) {
+        console.log('Aui no ha pasado nada')
         return 0
       }
 
@@ -153,7 +156,6 @@ export default {
 
     finalizarTurno (quien) { // para actualizar la BDD con la opcion del jugador
       let participantes = [this.partida.retador, this.partida.contricante]
-      console.log(quien)
 
       if (this.partida.names[participantes.indexOf(this.user.uid)] !== quien[1]) { // verifico si quien escogio es el jugador...
         return 0
