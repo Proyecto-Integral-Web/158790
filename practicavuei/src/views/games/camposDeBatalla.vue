@@ -3,11 +3,13 @@
      <div v-for="partida in coleccionDePartidas" :key="partida.id">
          <Arena
             :partida="partida"
+            :uid="user.uid"
             ></Arena>
      </div>
      <div v-for="partida in coleccionDePartidasSecundaria" :key="partida.id">
          <Arena
             :partida="partida"
+            :uid="user.uid"
             ></Arena>
      </div>
 </div>
